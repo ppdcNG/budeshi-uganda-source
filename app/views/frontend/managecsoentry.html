@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Manage CSO Entry</title>
+    <link rel="stylesheet" href="../css/uikit.min.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/jquery.js"></script>
+    <script src="../js/uikit.min.js"></script>
+    <script src="../js/uikit-icons.min.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src='../images/budeshi.png' / width='50'>
+            </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">CSO Name</div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+                
+            </ul>
+            <div>
+                <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <form class="uk-search uk-search-navbar uk-width-1-1">
+                                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                            </form>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active">
+                                <a href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class='full-page'>
+        <!-- Select year -->
+        <div class='uk-padding-large'>
+            <div class="">
+                <select class="uk-select uk-text-warning">
+                    <option selected disabled>Select Year</option>
+                    <option value='2015'>2015</option>
+                    <option value='2016'>2016</option>
+                    <option value='2017'>2017</option>
+                    <option value='2018'>2018</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- End of select year -->
+
+
+        <!-- List of Institutions table -->
+        <div class='uk-padding-large'>
+            <table class="uk-table uk-table-hover uk-table-divider">
+                <thead>
+                    <tr>
+                        <th>Edit</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Published</th>
+                        <th>Location</th>
+                        <th>Year</th>
+                        
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="#edit-project" title="Edit Project" uk-tooltip="pos: bottom" uk-toggle>
+                                    <span class="uk-margin-small-right" uk-icon="icon: file-edit"></span>
+                                </a>
+                            </td>
+                            <td>Construction of 3 blocks of classroom</td>
+                            <td>LOT 21 Construction of 3 blocks of classroom</td>
+                            <td>No</td>
+                            <td>Abia</td>
+                            <td>2014</td>
+                           
+                            <td>
+                                <a href="#delete-project" title="Delete Project" uk-tooltip="pos: bottom" uk-toggle>
+                                    <span class="uk-margin-small-right" uk-icon="icon: trash"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+            <!--- Delete Project -->
+            <div id="delete-project" class="uk-flex-top" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <p>Are you sure you want to delete Entry??</p>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                        <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-project-not' data-message="<span uk-icon='icon: check'></span>Project Successfully Deleted"
+                            data-status="success">Yes</button>
+                        <!-- Notification for deleting Institution -->
+                        <script>
+                            jQuery('#delete-project-not').on('click', function () {
+                                UIkit.notification($(this).data());
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <!-- xxx -->
+            <!-- Edit Project Modal -->
+            <div id="edit-project" uk-modal>
+                <div class="uk-modal-dialog">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">Edit Project </h2>
+                    </div>
+                    <div class="uk-modal-body">
+                        <form>
+                            <fieldset class="uk-fieldset">
+                                <div class="uk-width-1-1 uk-margin">
+                                    <label class="uk-form-label" for="title">Title</label>
+                                    <input class="uk-input" type="text" placeholder="E.g " id='title' name='title' title="The name of the project that through which this contracting process is funded (if applicable)"
+                                        uk-tooltip="pos: bottom" reqiured>
+                                </div>
+                                <div class="uk-width-1-1 uk-margin">
+                                    <label class="uk-form-label" for="description">Description</label>
+                                    <textarea class="uk-textarea" rows="3" placeholder="" title="A summary description of the project." uk-tooltip="pos: bottom"
+                                        reqiured></textarea>
+                                </div>
+                                <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                    <div>
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label" for="location">Location</label>
+                                            <input class="uk-input" type="text" placeholder="E.g " id='location' name='location' title="Location the projected will be carried out"
+                                                uk-tooltip="pos: bottom" reqiured>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label" for="title">Year</label>
+                                            <select class="uk-select" name='year' title="The year this project was initiated" uk-tooltip="pos: bottom">
+                                                <option value='' selected disabled>Select year</option>
+                                                <option value='2014'>2014</option>
+                                                <option value='2015'>2015</option>
+                                                <option value='2016'>2016</option>
+                                                <option value='2017'>2017</option>
+                                                <option value='2018'>2018</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label" for="title">Published</label>
+                                            <select class="uk-select" name='year'>
+                                                <option value='' selected disabled>Publish</option>
+                                                <option value='2014'>Yes</option>
+                                                <option value='2015'>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                        <button class="uk-button uk-button-primary uk-modal-close" id='edit-project-saved' data-message="<span uk-icon='icon: check'></span>Edit Successfully Saved"
+                            type="button">Save</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Notification for saving edit to project -->
+            <script>
+                jQuery('#edit-project-saved').on('click', function () {
+                    UIkit.notification($(this).data());
+                });
+            </script>
+            <!-- xxx -->
+           
+            
+        </div>
+    </div>
+    </div>
+    <!-- Pagination -->
+    <div class='pagination'>
+        <ul class="uk-pagination uk-flex-center uk-margin-medium-top" uk-margin>
+            <li>
+                <a href="#">
+                    <span uk-pagination-previous></span>
+                </a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li class="uk-disabled">
+                <span>...</span>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">6</a>
+            </li>
+            <li class="uk-active">
+                <span>7</span>
+            </li>
+            <li>
+                <a href="#">8</a>
+            </li>
+            <li>
+                <a href="#">
+                    <span uk-pagination-next></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--end of pagination -->
+
+</body>
+
+</html>

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Award Release</title>
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>/css/uikit.min.css" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>/css/styles.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit-icons.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+            <img src='<?php echo ABS_PATH;?>images/budeshi.png'/ width='50'>
+          </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">Award Release</div>
+        </div>
+        <div class="uk-navbar-right">
+            <div>
+                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <form class="uk-search uk-search-navbar uk-width-1-1">
+                                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                            </form>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#"><span class="uk-margin-small-right" uk-icon="icon: user"></span></a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active"><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--Release Params-->
+    <input type = "hidden" id = "project_id" value = "<?php echo $project_id?>"/>
+    <input type = "hidden" id = "rel_id" value = "<?php echo $rel_id;?>"/>
+    <input type = "hidden" id = "mda_id" value = "<?php echo $mda_id;?>"/>
+    <input type = 'hidden' id = "rel_type" value = "award"/>
+    <div class="uk-container">
+        <div class="uk-section uk-section-default">
+            <form id='release-form' class="uk-form-horizontal uk-margin-large">
+
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="ocid">OCID</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="ocid" type="text" placeholder="" title="A globally unique identifier for this Open Contracting Process. Composed of a publisher prefix and an identifier for the contracting process. "
+                            uk-tooltip="pos: bottom" value='' name='ocid' readonly>
+                    </div>
+                </div>
+                <div class='uk-grid-small uk-child-width-1-2 uk-margin' uk-grid>
+                    <div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="date">Release Date</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="date" type="date" placeholder="" value='' name='date' title="The date this information was first released, or published.
+" uk-tooltip="pos: bottom" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="id">Release ID</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="id" type="text" placeholder="" value='' name='id' title="An identifier for this particular release of information. "
+                                    uk-tooltip="pos: bottom" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="tag">Release Tag</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select" id="tag" name='tag[0]' title="Tags may be used to filter release and to understand the kind of information that a release might contain."
+                                    uk-tooltip="pos: bottom">
+                                <option value='tender'>Select a release tag</option>
+                                <option value='planning'>Planning</option>
+                                <option value='planningUpdate'>Planning Update</option>
+          <option value='tender'>Tender</option>
+          <option value='tenderAmendment'>Tender Amendment</option>
+          <option value='tenderUpdate'>Tender Update</option>
+          <option value='tenderCancellation'>Tender Cancellation</option>
+          <option value='award' selected>Award</option>
+          <option value='awardCancellation'>Award Cancellation</option>
+          <option value='awardUpdate'>Tender Update</option>
+          <option value='contract'>Contract</option>
+          <option value='contractUpdate'>Contract Update</option>
+          <option value='contractAmendment'>Contract Amendment</option>
+          <option value='implementation'>Implementation</option>
+          <option value='implementationUpdate'>Implementation Update</option>
+          <option value='contractTermination'>Contract Termination</option>
+          <option value='compiled'>Compiled Record</option>
+      </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="initiationType">Initiation Type</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select" id="initiationType" name='initiationType' title="String specifying the type of initiation process used for this contract, taken from the initiationType codelist. "
+                                    uk-tooltip="pos: bottom">
+                                <option value=''disabled selected>Select initiation type</option>
+          <option value=''>Tender</option>
+      </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parties -->
+                <div class="uk-section uk-section-muted uk-padding parties">
+                    <h3 class="uk-heading-bullet">Parties <a href="#add-party" title="Add Party" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: plus"></span></a></h3>
+
+                    <hr>
+                    <div id='parties' class="uk-grid-small uk-child-width-1-4" uk-grid>
+
+                    </div>
+                </div>
+                <!-- xx End of Parties xx -->
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="award-id">Award ID</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="award-id" type="text" placeholder="" value='' name='award.id' title="The identifier for this award. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid)."
+                            uk-tooltip="pos: bottom">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="award-title">Award Title</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="award-title" type="text" placeholder="" value = "" name='award.title' title="Award title" uk-tooltip="pos: bottom">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="award-description">Award Description</label>
+                    <div class="uk-form-controls">
+                        <textarea class="uk-textarea" rows="3" placeholder="" id='award-description' value = "" name='award.description' title="Award description"
+                            uk-tooltip="pos: bottom"></textarea>
+                    </div>
+                </div>
+                <div class='uk-grid-small uk-child-width-1-2 uk-margin' uk-grid>
+                    <div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="award-date">Award Date</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="award-date" type="date" placeholder="" value='' name='award.date' title="The date of the contract award. This is usually the date on which a decision to award was made.
+" uk-tooltip="pos: bottom">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="award-status">Award Status</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select" id="award-status" name='award.status' title="The current status of the award." uk-tooltip="pos: bottom">
+            <option value=''disabled selected>Select award status</option>
+            <option value='pending'>Pending</option>
+            <option value='active'>Active</option>
+            <option value='cancelled'>Cancelled</option>
+            <option value='unsuccessful'>Unsuccessful</option>
+        </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Value -->
+                <div class="uk-section uk-section-muted uk-padding uk-margin">
+                    <h3 class="uk-heading-bullet">Value</h3>
+                    <hr>
+                    <div class='uk-grid-small uk-child-width-1-2 uk-form-horizontal' uk-grid>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="value-amount">Amount</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="value-amount" type="number" value="" name='award.value.amount' title="Amount as a number.
+" uk-tooltip="pos: bottom">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="value-currency">Currency</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="value-currency" type="text" value="NGN" name='award.value.currency' title="The currency for each amount should always be specified using the uppercase 3-letter currency code from ISO4217.
+" uk-tooltip="pos: bottom">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- xxx -->
+
+                <!-- Suppliers -->
+                <div class='uk-form-horizontal'>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for='suppliers' title="The suppliers awarded this award. If different suppliers have been awarded different items of values, these should be split into separate award blocks.
+
+" uk-tooltip="pos: bottom">Suppliers</label>
+                        <select id='tender-org' class="uk-select" name='award.suppliers' style='width: 80%' multiple='multiple'>
+                            <?php echo $suppliers; ?>
+
+</select>
+                        
+                    </div>
+                </div>
+                <!-- End of suppliers -->
+
+
+                <!-- Items -->
+                <div class="uk-section uk-section-muted uk-padding items uk-margin">
+                    <h3 class="uk-heading-bullet">Items <a href="#add-item" title="Add Party" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: plus"></span></a></h3>
+
+                    <hr>
+                    <div id = "items-container" class="uk-child-width-1-3 uk-grid-match" uk-grid>
+
+                    </div>
+                    <!-- xxx -->
+                </div>
+                <!-- xx End of Items xx -->
+                <!-- Milestone -->
+                <div class="uk-section uk-section-muted uk-padding uk-margin">
+                    <h4 class="uk-heading-bullet">Milestone</h4>
+                    <hr>
+                    <div class='uk-form-horizontal'>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="mil-title">Title</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="mil-title" type="text" value="" name='milestone.title' title="milestones title" uk-tooltip="pos: bottom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class='uk-form-horizontal'>
+                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="mil-id">ID</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="mil-id" type="text" value="" name='milestone.id' title="A local identifier for this milestones, unique within this block. This field is used to keep track of multiple revisions of a milestone through the compilation from release to record mechanism."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="mil-type">Milestone Type</label>
+                                    <div class="uk-form-controls">
+                                        <select class="uk-select" id="mil-type" name='milestone.type' title="The type of milestone, drawn from an extended milestoneType codelist."
+                                            uk-tooltip="pos: bottom">
+                            <option value='preProcurement'>Pre-procurement Milestone</option>
+                            <option value='approval'>Approval </option>
+                            <option value='engagement'>Engagement </option>
+                            <option value='assessment'>Assessment </option>
+                            <option value='delivery'>Delivery </option>
+                            <option value='reporting'>Reporting </option>
+                            <option value='financing'>Financing</option>
+                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="mil-desc">Description</label>
+                            <div class="uk-form-controls">
+                                <textarea class="uk-textarea" id="mil-desc" rows='3' type="text" placeholder="" value='' name='milestone.description' title="A description of the milestone."
+                                    uk-tooltip="pos: bottom"></textarea>
+                            </div>
+                        </div>
+                        <div class='uk-grid-small uk-child-width-1-3' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="mil-code">Milestone code</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="mil-code" type="text" value="" name='milestone.code' title="Milestone codes can be used to track specific events that take place for a particular kind of contracting process. "
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="mil-dueDate">Due date</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="mil-dueDate" type="date" value="" name='milestone.dueDate' title="The date the milestone is due." uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="mil-dateMet">Date met</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="mil-dateMet" type="date" value="" name='milestone.dateMet' title="The date on which the milestone was met."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="mil-dateModified">Date modiefied</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="mil-dateModified" type="date" value="" name='milestone.dateModified' title="The date the milestone was last reviewed or modified and the status was altered or confirmed to still be correct."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="mil-status">Status</label>
+                                    <div class="uk-form-controls">
+                                        <select class="uk-select" id="mil-status" name='milestone.status' title="The status that was realized on the date provided in dateModified, drawn from the milestoneStatus codelist."
+                                            uk-tooltip="pos: bottom">
+                            <option value='scheduled'>Scheduled</option>
+                            <option value='met'>Met</option>
+                            <option value='notMet'>Not Met</option>
+                            <option value='partiallyMet'>Partially Met</option>
+                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class='uk-section-muted uk-margin'>
+                        <div id = "milestones" class="uk-grid-small uk-child-width-1-4 uk-text-center" uk-grid>
+                        </div>
+                    </div>
+                                <div class='uk-margin'>
+                                    <a onclick="addMilestone()" class="uk-button uk-button-primary uk-modal-close uk-float-right" type="button" data-status="success">add milestone</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of milestone -->
+                <!-- Contract Period -->
+                <div class="uk-section uk-section-muted uk-padding uk-margin">
+                    <h3 class="uk-heading-bullet">Contract Period</h3>
+                    <hr>
+                    <div class='uk-grid-small uk-child-width-1-2 uk-form-horizontal' uk-grid>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="contract-startDate">Start Date</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="contract-startDate" type="date" name='award.contractPeriod.startDate' title="The start date for the period. When known, a precise start date must always be provided.
+" uk-tooltip="pos: bottom" onchange='getDaysResponse("contract-startDate","contract-endDate", "contract-durationInDays")'>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="contract-endDate">End date</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="contract-endDate" type="date"  name='award.contractPeriod.endDate' title="The end date for the period. When known, a precise end date must always be provided.
+" uk-tooltip="pos: bottom" onchange='getDaysResponse("contract-startDate","contract-endDate", "contract-durationInDays")'>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="contract-maximumExtent">Maximum Extent</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="contract-maximumExtent" type="date"  name='award.contractPeriod.maximumExtent' title="The period cannot be extended beyond this date. This field is optional, and can be used to express the maximum available data for extension or renewal of this period.
+" uk-tooltip="pos: bottom">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="contract-durationInDays">Duration (Days)</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="contract-durationInDays" type="number"  name='award.contractPeriod.durationInDays' title="	The maximum duration of this period in days."
+                                        uk-tooltip="pos: bottom">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of contract period -->
+                <!-- document -->
+                <div class="uk-section uk-section-muted uk-padding documents">
+                    <h3 class="uk-heading-bullet">Documents <a href="#add-document" title="Add Document" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: plus"></span></a></h3>
+
+                    <hr>
+                    <div id="documents-container" class="uk-child-width-1-3 uk-grid-match" uk-grid>
+                    </div>
+                </div>
+                <!-- xx End of document xx -->
+
+                <!-- Amendments -->
+                <div class="uk-section uk-section-muted uk-padding documents uk-margin">
+                    <h3 class="uk-heading-bullet">Amendments <a href="#add-amendment" title="Add Amendment" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: plus"></span></a></h3>
+                    <hr>
+                    <div id="amendments-container" class="uk-child-width-1-3 uk-grid-match" uk-grid>
+
+                    </div>
+                </div>
+                <!-- xx End of amendments xx -->
+
+                <div>
+                    <a  class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</a>
+                    <a  class="uk-button uk-button-primary uk-modal-close uk-float-right" type="button" id='edit-release' data-message="<span uk-icon='icon: check'></span> Saved Release"
+                        data-status="success">Edit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Add Party Modal -->
+    <div id="add-party" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Select Organization</h2>
+            </div>
+            <div class="uk-modal-body">
+                <form id = "party" class="uk-form-stacked">
+                    <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for='select-org'>Organization</label>
+                                <select id='select-org' class="uk-select" name='organization' style='width: 100%'>
+                                                <option value="" selected disabled>Select Organization</option>
+            </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="party-role">Roles</label>
+                                <div class="uk-form-controls">
+                                    <select id="party-role" name='role' style='width: 100%' multiple='multiple'>
+            <option value='buyer'>Buyer</option>
+            <option value='procuringEntity'>Procuring Entity</option>
+            <option value='supplier'>Supplier</option>
+            <option value='tenderer'>Tenderer</option>
+            <option value='funder'>Funder</option>
+            <option value='enquirer'>Enquirer</option>
+            <option value='payer'>Payer</option>
+            <option value='payee'>Payee</option>
+            <option value='reviewBody'>Review Body</option>
+            <option value = 'x_monitoringBody'>Monitoring Body</option>
+        </select>
+                                    <script type="text/javascript">
+                                        $('#party-role').select2();
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary uk-modal-close" type="button" onclick="addParty()" id='add-party-butt' data-message="<span uk-icon='icon: check'></span> Added Party"
+                    data-status="success">Add</button>
+                <script>
+                                        jQuery('#add-party-butt').on('click', function () {
+                                            UIkit.notification($(this).data());
+                                        });
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- xxx -->
+    <!-- Add Item Modal -->
+    <div id="add-item" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Add Item</h2>
+            </div>
+            <div class="uk-modal-body">
+                <form id="items" class="uk-form-horizontal">
+                    <div class='uk-grid-small uk-child-width-1-1' uk-grid>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="item-id">ID</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="item-id" type="text" name='id' title="A local identifier to reference and merge the items by. Must be unique within a given array of items."
+                                        uk-tooltip="pos: bottom">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="item-desc">Description</label>
+                                <div class="uk-form-controls">
+                                    <textarea class="uk-textarea" rows="3" name='description' id='item-desc' title="A description of the goods, services to be provided."
+                                        uk-tooltip="pos: bottom"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-section uk-section-muted uk-padding uk-margin">
+                        <h3 class="uk-heading-bullet">Classification</h3>
+                        <hr>
+                        <div class='uk-grid-small uk-child-width-1-3' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="class-scheme">Scheme</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="class-scheme" type="text" name='classification.scheme' title="An classification should be drawn from an existing scheme or list of codes. This field is used to indicate the scheme/codelist from which the classification is drawn. For line item classifications, this value should represent an known Item Classification Scheme wherever possible."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="class-id">ID</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="class-id" type="text" name='classification.id' title="The classification code drawn from the selected scheme."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="class-uri">Uri</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="class-uri" type="text" name='classification.uri' title="A URI to identify the code. In the event individual URIs are not available for items in the identifier scheme this value should be left blank."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="class-desc">Description</label>
+                            <div class="uk-form-controls">
+                                <textarea class="uk-textarea" rows="3" name='classification.description' id='class-desc' title="A textual description or title for the code."
+                                    uk-tooltip="pos: bottom"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-section uk-section-muted uk-padding uk-margin">
+                        <h3 class="uk-heading-bullet">Additional classifications</h3>
+                        <hr>
+                        <div class='uk-grid-small uk-child-width-1-3' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="class-scheme">Scheme</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="class-scheme" type="text" name='additionalClassification[0].scheme' title="An classification should be drawn from an existing scheme or list of codes. This field is used to indicate the scheme/codelist from which the classification is drawn. For line item classifications, this value should represent an known Item Classification Scheme wherever possible."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="class-id">ID</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="class-id" type="text" name='additionalClassification[0].id' title="The classification code drawn from the selected scheme."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="class-uri">Uri</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="class-uri" type="text" name='additionalClassification[0].uri' title="A URI to identify the code. In the event individual URIs are not available for items in the identifier scheme this value should be left blank."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="add-class-desc">Description</label>
+                            <div class="uk-form-controls">
+                                <textarea class="uk-textarea" rows="3" value="" name='additionalClassification[0].description' id='class-desc' title="A textual description or title for the code."
+                                    uk-tooltip="pos: bottom"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="quantity">Quantity</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="quantity" type="number" name='quantity' title="The number of units required." uk-tooltip="pos: bottom">
+                        </div>
+                    </div>
+                    <div class="uk-section uk-section-muted uk-padding uk-margin">
+                        <h3 class="uk-heading-bullet">Unit</h3>
+                        <hr>
+                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="unit-scheme">Scheme</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="unit-scheme" type="text" value="" name='unit.scheme' title="The list from which units of measure identifiers are taken. This should be an entry from the options available in the unitClassificationScheme codelist. Use of the scheme ‘UNCEFACT’ for the UN/CEFACT Recommendation 20 list of ‘Codes for Units of Measure Used in International Trade’ is recommended, although other options are available."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="unit-id">ID</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="unit-id" type="text" value="" name='unit.id' title="The identifier from the codelist referenced in the scheme property. "
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="unit-name">Name</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="unit-name" type="text" value="" name='unit.name' title="Name of the unit." uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="unit-uri">Uri</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="unit-uri" type="text" value="" name='unit.uri' title="If the scheme used provide a machine-readable URI for this unit of measure, this can be given."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-section uk-section-primary uk-padding uk-margin">
+                            <h3 class="uk-heading-bullet">Value</h3>
+                            <hr>
+                            <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                <div>
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="unit-value-amount">Amount</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="unit-value-amount" type="number" name='unit.value.amount' title="Amount as a number." uk-tooltip="pos: bottom">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="currency">Currency</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="unit-value-currency" type="text" value="NGN" name='unit.value.currency' title="The currency for each amount should always be specified using the uppercase 3-letter currency code from ISO4217."
+                                                uk-tooltip="pos: bottom">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary uk-modal-close" type="button" onclick="addItem()" id='add-item-butt' data-message="<span uk-icon='icon: check'></span> Added Item"
+                    data-status="success">Add</button>
+            </div>
+        </div>
+    </div>
+    <!-- xxx -->
+    <!-- View Item Modal -->
+    <div id="view-item" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">View Item </h2>
+            </div>
+            <div class="uk-modal-body">
+                <form class="uk-form-stacked">
+                    <div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="view-item-descr">Description</label>
+                            <div class="uk-form-controls">
+                                <textarea class="uk-textarea" rows="3" value="" name='description' id='view-item-descr' >Cement bags</textarea>
+                            </div>
+                        </div>
+                        <div class='uk-grid-small uk-child-width-1-3' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="view-item-quantity">Quantity</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="view-item-quantity" type="number" value="30" name='quantity' >
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="view-item-amount">Amount</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="view-item-amount" type="number" value="2000" name='amount' disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="view-item-currency">Currency</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="view-item-currency" type="text" value="Naira" name='currency' disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- xxx -->
+    <!-- Add document Modal -->
+    <div id="add-document" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Add Document</h2>
+            </div>
+            <div class="uk-modal-body">
+                <form id="documents" class="uk-form">
+                    <div class='uk-form-stacked uk-margin-large'>
+                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="documentType">Document Type</label>
+                                    <div class="uk-form-controls">
+                                        <select class="uk-select" id="documentType" name='documentType' title="	A classification of the document described taken from the documentType codelist."
+                                            uk-tooltip="pos: bottom">
+            <option value=''selected disabled>Select document type</option>
+            <option value='tenderNotice'>Tender Notice</option>
+            <option value='awardNotice'>Award Notice</option>
+            <option value='contractNotice'>Contract Notice</option>
+            <option value='completionCertificate'>Completion Certificate</option>
+            <option value='procurementPlan'>Procurement Plan</option>
+            <option value='biddingDocuments'>Bidding Documents</option>
+            <option value='technicalSpecifications'>Technical Specifications</option>
+            <option value='evaluationCriteria'>Evaluation Criteria</option>
+            <option value='evaluationReports'>Evaluation Reports</option>
+            <option value='contractDraft'>Contract Draft</option>
+            <option value='contractSigned'>Contract Signed</option>
+            <option value='contractArrangement'>Contract Arrangements</option>
+            <option value='contractSchedule'>Contract Schedules</option>
+            <option value='physicalProgressReports'>Physical progress reports</option>
+            <option value='financialProgressReports'>Financial progress reports</option>
+            <option value='finalAudit'>Final Audit</option>
+            <option value='hearingNotice'>Hearing Notice</option>
+            <option value='marketStudies'>Market Studies</option>
+            <option value='eligibilityCriteria'>Eligibility Criteria</option>
+            <option value='clarifications'>Clarifications to bidders questions</option>
+            <option value='shortlistedFirms'>Shortlisted Firms</option>
+            <option value='environmentalImpact'>Environmental Impact</option>
+            <option value='assestAndLiabilityAssessment'>Assessment of government's assets and liabilities</option>
+            <option value='riskProvisions'>Risk Provisions</option>
+            <option value='winningBid'>Winning Bid</option>
+            <option value='marketStudies'>Market Studies</option>
+            <option value='complaints'>Complaints and decisions</option>
+            <option value='contractAnnexe'>Annexes to the Contract</option>
+            <option value='contractGuarantees'>Guarantees</option>
+            <option value='subContract'>Subcontracts</option>
+            <option value='needsAssessment'>Needs Assessment</option>
+            <option value='feasibilityStudy'>Feasibility Study</option>
+            <option value='projectPlan'>Project Plan</option>
+            <option value='billOfQuantity'>Bill Of Quantity</option>
+            <option value='bidders'>Information on bidders</option>
+            <option value='conflictOfInterest'>Conflict of Interest</option>
+            <option value='debarments'>Debarments</option>
+            <option value='illustration'>Illustrations</option>
+            <option value='submission'>Bid Submission Documents</option>
+            <option value='contractSummary'>Contract Summary</option>
+            <option value='cancellationDetails'>Cancellation Details</option>
+        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="doc-title">Title</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="doc-title" type="text"  name='title' title="The document title." uk-tooltip="pos: bottom">
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="doc-description">Description</label>
+                            <div class="uk-form-controls">
+                                <textarea class="uk-textarea" rows="3"  id='doc-description' name='description' title="A short description of the document. We recommend descriptions do not exceed 250 words. In the event the document is not accessible online, the description field can be used to describe arrangements for obtaining a copy of the document"
+                                    uk-tooltip="pos: bottom"></textarea>
+                            </div>
+                        </div>
+                        <div class="uk-grid-small uk-childwidth-1-2">
+                            <div>
+                                <div class="document-upload" uk-form-custom>
+                                    <input type="file" id = "file-input">
+                                    <button id = "select-file" class="uk-button uk-button-default" type="button" tabindex="-1">Select FILE</button>
+                                </div>
+                            </div>
+                            <progress id="progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+                            <div>
+                                <div class="uk-margin">
+                                    <label for="uri" class="uk-form-label">Uri</label>
+                                    <div class="uk-form-controls">
+                                        <input type="text" class="uk-input" id="document-url" name="url">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="doc-id">ID</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="doc-id" type="text" value="" name='id' title="A local, unique identifier for this document. This field is used to keep track of multiple revisions of a document through the compilation from release to record mechanism"
+                                            uk-tooltip="pos: bottom" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="datePublished">Date Published</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="datePublished" type="date" value="" name='datePublished' title="The date on which the document was first published. This is particularly important for legally important documents such as notices of a tender" uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="dateModified">Date Modified</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="dateModified" type="date" value="" name='dateModified' title="Date that the document was last modified"
+                                            uk-tooltip="pos: bottom" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="doc-format">Format</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="doc-format" type="text" name='format' title="The format of the document taken from the IANA Media Types codelist, with the addition of one extra value for ‘offline/print’, used when this document entry is being used to describe the offline publication of a document. Use values from the template column. Links to web pages should be tagged ‘text/html’"
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="doc-language">Language</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="doc-language" type="text" value="en" name='language' title="Specifies the language of the linked document using either two-letter ISO639-1, or extended BCP47 language tags. The use of lowercase two-letter codes from ISO639-1 is strongly recommended unless there is a clear user need for distinguishing the language subtype."
+                                            uk-tooltip="pos: bottom">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary uk-modal-close" type="button" onclick="addDocument()" id='add-doc-butt' data-message="<span uk-icon='icon: check'></span> Added Document"
+                    data-status="success">Add</button>
+            </div>
+        </div>
+    </div>
+    <!-- Add Amendment Modal -->
+                    <div id="add-amendment" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Add Amendment</h2>
+                            </div>
+                            <div class="uk-modal-body">
+                                <form id = "amendments" class='uk-form-stacked uk-margin-large'>
+                                    <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                        <div>
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="amendment-id">ID</label>
+                                                <div class="uk-form-controls">
+                                                    <input class="uk-input" id="amendment-id" type="text" value="" name='id' title="An identifier for this amendment: often the amendment number"
+                                                        uk-tooltip="pos: bottom">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="amendment-date">Amendment Date</label>
+                                                <div class="uk-form-controls">
+                                                    <input class="uk-input" id="amendment-date" type="date" value="" name='date' title="The date of this amendment." uk-tooltip="pos: bottom">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="amendment-description">Description</label>
+                                        <div class="uk-form-controls">
+                                            <textarea class="uk-textarea" rows="3" value="" id='amendment-decription' name='description' title="A free text, or semi-structured, description of the changes made in this amendment."
+                                                uk-tooltip="pos: bottom"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="amendment-rationale">Rationale</label>
+                                        <div class="uk-form-controls">
+                                            <textarea class="uk-textarea" rows="3" value="" id='amendment-rationale' name='rationale' title="An explanation for the amendment.
+" uk-tooltip="pos: bottom"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                        <div>
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="amendsReleaseID">Amended release(identifier)</label>
+                                                <div class="uk-form-controls">
+                                                    <select class="uk-select" id="amendsReleaseID" type="text" name='amendsReleaseID' title="Provide the identifier (release.id) of the OCDS release (from this contracting process) that provides the values for this contracting process before the amendment was made."
+                                                        uk-tooltip="pos: bottom">
+                                                        
+                                                </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="releaseID">Amending release(identifier)</label>
+                                                <div class="uk-form-controls">
+                                                    <input class="uk-input" id="releaseID" type="text" value="" name='releaseID' title="Provide the identifier (release.id) of the OCDS release (from this contracting process) that provides the values for this contracting process after the amendment was made.
+" uk-tooltip="pos: bottom" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" type="button" onclick="addAmendment()" id='add-amend-butt' data-message="<span uk-icon='icon: check'></span> Added Amendment"
+                                    data-status="success">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- xxx -->
+
+    <script src="<?php echo ABS_PATH;?>js/form2js.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/award-release.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/js2form.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/loadarrays.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+{
+    "ocid": "",
+    "date": "",
+    "id": "",
+    "tag": [
+        "award"
+    ],
+    "initiationType": "",
+    "award": {
+        "id": "",
+        "title": "",
+        "description": "",
+        "date": "",
+        "status": "",
+        "value": {
+            "amount":"",
+            "currency": "NGN"
+        },
+        "suppliers": [],
+        "contractPeriod": {
+            "startDate": "",
+            "endDate": "",
+            "maximumExtent": "",
+            "durationInDays": ""
+        },
+        "milestones": [],
+        "items": [],
+        "documents": [],
+        "amendments": []
+    },
+    "parties": []
+}

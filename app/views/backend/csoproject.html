@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Manage Institution</title>
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/uikit.min.css" />
+    <!--<link rel="stylesheet" href="<?php echo ABS_PATH;?>css/styles.css" /> -->
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/r-2.2.1/sl-1.2.5/datatables.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit-icons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/r-2.2.1/sl-1.2.5/datatables.min.js"></script>
+    <script src="<?php echo ABS_PATH?>js/index.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-margin top" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src='<?php echo ABS_PATH;?>images/budeshi.png' / width='50'>
+            </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">
+                <h3>
+                    <?php echo $cso_name?>
+                </h3>
+            </div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#add-project" title="Create a New Project" uk-tooltip="pos: bottom" uk-toggle>
+                        <span class="uk-margin-small-right" uk-icon="icon: plus"></span>
+                    </a>
+                    <!-- Add Project Modal -->
+                    <div id="add-project" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Add a New Project </h2>
+                            </div>
+
+                            <form id="add-project-form">
+                                <div class="uk-modal-body">
+                                    <fieldset class="uk-fieldset">
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="title">Title</label>
+                                            <input class="uk-input" type="text" placeholder="E.g " id='title' name='title'
+                                                title="The name of the project that through which this contracting process is funded (if applicable)"
+                                                uk-tooltip="pos: bottom" reqiured>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="description">Description</label>
+                                            <textarea class="uk-textarea" rows="3" placeholder="" name="description"
+                                                title="A summary description of the project." uk-tooltip="pos: bottom"></textarea>
+                                        </div>
+                                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="location">Location</label>
+                                                    <input class="uk-input" type="text" placeholder="E.g " id='location'
+                                                        name='location' title="Location the projected will be carried out"
+                                                        uk-tooltip="pos: bottom">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="title">Year</label>
+                                                    <select class="uk-select" name='year' title="The year this project was initiated"
+                                                        uk-tooltip="pos: bottom">
+                                                        <option value='' selected disabled>Select year</option>
+                                                        <option value='2014'>2014</option>
+                                                        <option value='2015'>2015</option>
+                                                        <option value='2016'>2016</option>
+                                                        <option value='2017'>2017</option>
+                                                        <option value='2018'>2018</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="title">Procuring Entity</label>
+                                                    <select class="mda" class="uk-select" name='mda' style='width: 100%'>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="location">Budget Amount</label>
+                                                    <input class="uk-input" type="text" placeholder="E.g " id='location'
+                                                        name='budget_amount' title="Budgeted Amount For this project"
+                                                        uk-tooltip="pos: bottom" reqiured>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-margin uk-width-1-1">
+                                            <label class="uk-form-label" for="contract-amount">Contract Amount</label>
+                                            <input class="uk-input" type="text" placeholder="Contract Amount" id='location'
+                                                name='contract_amount' title="Contract Amount for this project"
+                                                uk-tooltip="pos: bottom" reqiured>
+                                        </div>
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="location">Contractor</label>
+                                                <input class="uk-input" type="text" placeholder="Contractor Name" id='location'
+                                                    name='contractor.name' title="Contractor Details" uk-tooltip="pos: bottom"
+                                                    reqiured>
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="location">Contractor Email</label>
+                                                <input name='contractor.email' class="uk-input" placeholder="Contractor Email">
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="location">Contractor Phone</label>
+                                                <input name='contractor.phone' class="uk-input" placeholder="Contractor Phone">
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="location">Contractor Address</label>
+                                                <input name='contractor.address' class="uk-input" placeholder="Contractor Address">
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                    <div class="uk-modal-footer uk-text-right">
+                                        <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                        <button class="uk-button uk-button-primary uk-border-rounded" type="submit">
+                                            Save </button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                    <!-- xxx -->
+                </li>
+            </ul>
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active">
+                                <a href="<?php echo ABS_PATH?>/CSO/transact/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="cso-back">
+        <div>
+            <div class="uk-position-relative" uk-slider="center: true; autoplay: true; ">
+
+                <ul class="uk-slider-items uk-grid">
+                    <li class="uk-width-1-1 uk-transition-toggle">
+                        <div class="uk-panel">
+
+                            <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light">
+
+                                <p class="uk-text-center">To add a report to existing project, Use the search panel on
+                                    the left to search for projects.
+                                    Then click on edit on the first column of the row to add report.</p>
+                                <p class="uk-text-center">
+                                    To add report to non-existing projects, you must first of all create project by
+                                    clicking the
+                                    <span uk-icon="plus"></span> button on the nav bar top right corner of the page and
+                                    then enter details.
+                                </p>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+                <h3 class="uk-padding uk-heading-bullet"><span uk-icon="icon: search; ratio:2"></span>Search Projects
+                    you want to add to your portfolio of reports</h3>
+                <form id="search" class="uk-padding uk-grid-small" uk-grid>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small " uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/inspect.png"
+                                    width="120%" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px;">
+                                    <input class="uk-input uk-border-rounded" type="text" placeholder="Search Title"
+                                        name="title" style="border:1px solid black; height: 32.6px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small " uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/toolbox.png"
+                                    width="120%" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px;">
+                                    <input class="uk-input uk-border-rounded" type="text" placeholder="Search Project Id"
+                                        name="project_id" style="border:1px solid black; color:black; height: 32.6px">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small" uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/home.png" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px">
+                                    <select class="uk-select mda" name='mda' style='width: 100%' multiple='multiple'>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small " uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/year.png" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px">
+                                    <select id='select-year' class="uk-select" name='year' style='width: 100%' multiple='multiple'>
+                                        <option value="">20154</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                    </select>
+                                    <script type="text/javascript">
+                                        $('#select-year').select2({
+                                            placeholder: "Project Years"
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <button class="uk-button uk-button-primary uk-border-rounded" type="submit">Search</button>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <button class="uk-button uk-button-primary uk-border-rounded" uk-toggle="target: #add-project">Add
+                            New project</button>
+                    </div>
+                </form>
+                <div class="uk-width-1-1 uk-padding-large">
+                    <div>
+                        <table id="search-table" class="uk-table uk-table-hover uk-table-divider">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Procuring Entity</th>
+                                    <th>Year</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-child-width-1-1" uk-grid>
+            <div>
+                <h3 class="uk-heading-bullet  uk-padding"><span uk-icon="icon: folder; ratio: 2"></span> My Porfolio of
+                    Projects<span></span></h3>
+                <div class="uk-grid-collapse" id="stop" uk-grid>
+                    <div class="uk-width-expand@s  uk-padding ">
+                        <div>
+                            <table id="project-table" class="uk-table uk-table-hover uk-table-divider">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Procuring Entity</th>
+                                        <th>Year</th>
+                                        <th>Contractor</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="uk-child-width-1-1" uk-grid>
+
+        <div>
+            <div class="uk-grid-collapse" id="stop" uk-grid>
+                <div class="uk-width-expand@s  uk-padding ">
+                    <h3 class="uk-heading-bullet"><span uk-icon="icon:file; ratio:2"></span> Reports</h3>
+                    <div>
+                        <ul class="uk-list uk-list-large uk-list-striped">
+                            <?php echo $reports;?>
+                        </ul>
+                        <!--- Delete Project -->
+                        <div id="delete-modal" class="uk-flex-top" uk-modal>
+                            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+                                <p>Are you sure you want to delete <span id="delete-item"></span></p>
+                                <div class="uk-modal-footer uk-text-right">
+                                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                    <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-project-not'
+                                        onclick="deleteItem()">Yes</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- xxx -->
+                        <!-- Add Report Modal -->
+                        <div id="add-report-modal" uk-modal>
+                            <div class="uk-modal-dialog">
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+                                <div class="uk-modal-header">
+                                    <h2 class="uk-modal-title">Add Report </h2>
+                                </div>
+                                <form id="add-report-form" enctype="multipart/form-data">
+                                    <div class="uk-modal-body">
+                                        <input id="project-id" type="hidden" name="project_id" />
+                                        <fieldset class="uk-fieldset">
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <label class="uk-form-label" for="title">Report Title</label>
+                                                <input class="uk-input" type="text" placeholder="E.g " id='title' name='title'
+                                                    title="The name of the project that through which this contracting process is funded (if applicable)"
+                                                    uk-tooltip="pos: bottom" reqiured>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <label class="uk-form-label" for="description">Report Text</label>
+                                                <textarea name="report" class="uk-textarea" rows="3" placeholder=""
+                                                    title="Copy and Paste Report Text here" uk-tooltip="pos: bottom"
+                                                    reqiured></textarea>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <div uk-form-custom="target: true">
+                                                    <input id = "report-file" type="file" name="report_pdf">
+                                                    <input class="uk-input uk-form-width-medium" type="text"
+                                                        placeholder="PDF Version of Report" disabled>
+                                                </div>
+                                            </div>
+                                            <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input id="image-2" type="file" name="image-1">
+                                                            <input class="uk-input uk-form-width-medium" type="text"
+                                                                placeholder="Select file" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input id="image-2" type="file" name="image-2">
+                                                            <input class="uk-input uk-form-width-medium" type="text"
+                                                                placeholder="Select file" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input id="image-3" type="file" name="image-3">
+                                                            <input class="uk-input uk-form-width-medium" type="text"
+                                                                placeholder="Select file" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input id="image-4" type="file" name="image-4">
+                                                            <input class="uk-input uk-form-width-medium" type="text"
+                                                                placeholder="Select file" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+
+                                    </div>
+                                    <div class="uk-modal-footer uk-text-right">
+                                        <button class="uk-button uk-button-default uk-float-left" type="button">Cancel</button>
+                                        <button type="submit" class="uk-button uk-button-primary" id='edit-project-saved'>Save</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- Edit Report Modal -->
+                        <div id="edit-report" uk-modal>
+                            <div class="uk-modal-dialog">
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+                                <div class="uk-modal-header">
+                                    <h2 class="uk-modal-title">Edit Report </h2>
+                                </div>
+
+                                <div class="uk-modal-body">
+                                    <input type="hidden" id="report-id"/>
+                                    <form id="edit-body">
+                                        <h4 class="uk-heading-line"> Report Body</h4>
+                                        <fieldset class="uk-fieldset">
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <label class="uk-form-label" for="title">Report Title</label>
+                                                <input class="uk-input" type="text" placeholder="E.g " id='report-title' name='title'
+                                                    title="The name of the project that through which this contracting process is funded (if applicable)"
+                                                    uk-tooltip="pos: bottom" reqiured>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <label class="uk-form-label" for="description">Report Text</label>
+                                                <textarea class="uk-textarea" rows="3" placeholder="" title="A summary description of the project."
+                                                   name = "report" id = "report-text" uk-tooltip="pos: bottom" reqiured></textarea>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <button class="uk-button uk-button-primary uk-align-right uk-border-rounded"
+                                                    id='edit-title-saved' uk-tooltip = "title: click to save report Title and Body" type="submit">Save <span uk-icon="check"></span></button>
+
+                                            </div>
+                                        </fieldset>
+                                    </form>
+
+                                   <h4 class="uk-heading-line"> Report File </h4>
+                                    <form id = "edit-report-file" class="uk-grid uk-margin" uk-grid>
+                                            <div class="uk-width-1-2">
+                                                    <div uk-form-custom="target: true">
+                                                            <input type="file" name="report_pdf">
+                                                            <input class="uk-input uk-form-width-medium" type="text"
+                                                                placeholder="Select Report File" uk-tooltip="Select New report File to replace existing one"
+                                                                disabled>
+                                                        </div>
+                                            </div>
+                                            <div class="uk-width-1-2">
+                                                    <button class="uk-button uk-button-primary uk-border-rounded uk-align-right "
+                                                    id='edit-report-saved' type="submit">Save <span uk-icon="upload"></span></button>
+                                            </div>
+                                    </form>
+                                    <form id='edit-uploads'class = 'uk-margin uk-padding'>
+                                        <h4 class="uk-heading-line"> Upload Images</h4>
+                                        <fieldset class="uk-fieldset">
+
+                                            <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                                <input class="image-id" type="hidden" name = 'edit-image-id-1'/>
+                                                <input class="image-id" type="hidden" name = 'edit-image-id-2'/>
+                                                <input class="image-id" type="hidden" name = 'edit-image-id-3'/>
+                                                <input type="hidden" class="image-id" name = 'edit-image-id-4'/>
+                                                <input class="image-name" type="hidden" name = 'edit-image-name-1'/>
+                                                <input class="image-name" type="hidden" name = 'edit-image-name-2'/>
+                                                <input class="image-name" type="hidden" name = 'edit-image-name-3'/>
+                                                <input type="hidden" class="image-name" name = 'edit-image-name-4'/>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input name = "edit-image-1" class = "image-input" type="file">
+                                                            <img class = "rep-img" src="<?php echo ABS_PATH;?>images/uploadimage.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input name = "edit-image-2"class = "image-input"  type="file">
+                                                            <img class = "rep-img" src="<?php echo ABS_PATH;?>images/uploadimage.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input name = "edit-image-3"class = "image-input" type="file">
+                                                            <img class = "rep-img" src="<?php echo ABS_PATH;?>images/uploadimage.png" />
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="uk-margin" uk-margin>
+                                                        <div uk-form-custom="target: true">
+                                                            <input name = "edit-image-4"class = "image-input" type="file">
+                                                            <img class = "rep-img" src="<?php echo ABS_PATH;?>images/uploadimage.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <button class="uk-button uk-button-primary uk-align-right uk-border-rounded"
+                                                    id='edit-project-saved'
+                                                    type="submit">Upload <span uk-icon="upload"></span></button>
+
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- Notification for saving edit to project -->
+                        <script>
+                            jQuery('#edit-project-saved').on('click', function () {
+                                UIkit.notification($(this).data());
+                            });
+                        </script>
+                        <!-- xxx -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+<script src="<?php echo ABS_PATH;?>js/form2js.js"></script>
+<script src="<?php echo ABS_PATH;?>js/cso.js"></script>
+
+</html>

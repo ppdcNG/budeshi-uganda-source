@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Manage Institution</title>
+    <link rel="stylesheet" href="<?php echo ABS_PATH?>/css/uikit.min.css" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH?>/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.4.2/b-html5-1.4.2/b-print-1.4.2/datatables.min.css"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
+
+    <script src="<?php echo ABS_PATH?>js/jquery.js"></script>
+    
+    <script src="<?php echo ABS_PATH?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH?>js/uikit-icons.min.js"></script>
+    <script src="<?php echo ABS_PATH?>js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-navbar-transparent back-top" uk-sticky uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src='<?php echo ABS_PATH?>images/budeshi.png' / width='50'>
+            </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">
+                <h3>
+                    <?php echo $mda_name;?> Projects</h3>
+            </div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#add-project" title="Add New Project" uk-tooltip="pos: bottom" uk-toggle>
+                        <span class="uk-margin-small-right" uk-icon="icon: plus"></span>
+                    </a>
+                    <!-- Add Project Modal -->
+                    <div id="add-project" uk-modal='bg-close: false'>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Add New Project </h2>
+                            </div>
+                            <div class="uk-modal-body">
+                                <form id="add_project_form">
+                                    <input name="mda_id" id="mda_id" type="hidden" value="<?php echo $mda_id;?>" />
+                                    <input type="hidden" name="updated_by" value="<?php echo $_SESSION[" id "];?>"/>
+                                    <fieldset class="uk-fieldset">
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="title">Title</label>
+                                            <input class="uk-input" type="text" placeholder="E.g " id='title' name='title' reqiured>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="description">Description</label>
+                                            <textarea class="uk-textarea" rows="3" placeholder="" id="description" name="description" reqiured></textarea>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="year">Year</label>
+                                                <select class="uk-select" name='year' id="year">
+                                                    <option value='2010-2011'>2010-2011</option>
+                                                    <option value='2011-2012'>2011-2012</option>
+                                                    <option value='2012-2013'>2012-2013</option>
+                                                    <option value='2013-2014'>2013-2014</option>
+                                                    <option value='2014-2015'>2014-2015</option>
+                                                    <option value='2015-2016'>2015-2016</option>
+                                                    <option value='2016-2017'>2016-2017</option>
+                                                    <option value='2017-2018'>2017-2018</option>
+                                                    <option value='2018-2019'>2018-2019</option>
+                                                    <option value='2019-2020'>2019-2020</option>
+                                                    <option value='2020-2021'>2020-2021</option>
+                                                    <option value='2021-2022'>2021-2022</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="location">Location</label>
+                                            <select class='uk-select' id="location" name="location"  style='width: 100%'>
+                                                <?php echo $districts;?>
+                                            </select>
+                                            <script>
+                                                $("#location").select2();
+                                            </script>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="status">Status</label>
+                                            <select class='uk-select' id="status" name="status">
+                                                <option value='Active Complete'>Active Complete</option>
+                                                <option value='Inactive Complete'>Inactive Complete</option>
+                                                <option value='Active Incomplete'>Active Incomplete</option>
+                                                <option value='Inactive Incomplete'>Inactive Incomplete</option>
+                                            </select>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="published">Published</label>
+                                            <select class='uk-select' id="published" name="published">
+                                                <option value='yes'>Yes</option>
+                                                <option value='no'>No</option>
+                                            </select>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="monitored">Monitored?</label>
+                                            <select class='uk-select' id="monitored" name="monitored">
+                                                <option value='yes'>Yes</option>
+                                                <option value='no' selected>No</option>
+                                            </select>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" id='save-project-button'>Add Project</button>
+                                <!-- Notification for saving new project -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- xxx -->
+                </li>
+                <li>
+                    <a href="<?php echo ABS_PATH;?>Monitor" title="MDA Page" uk-tooltip="pos: bottom">
+                        <span class="uk-margin-small-right" uk-icon="icon: home"></span>
+                    </a>
+                </li>
+            </ul>
+            <div>
+                <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <form class="uk-search uk-search-navbar uk-width-1-1">
+                                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                            </form>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="">
+                        <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active">
+                                <a href="#">Manage Account</a>
+                            </li>
+                            <li class="uk-active">
+                                <a href="<?php echo ABS_PATH?>/Monitor/transact/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class='navigation uk-padding'>
+        <ul class="uk-breadcrumb">
+            <li>
+                <a href="<?php echo ABS_PATH?>Monitor">List of MDAs</a>
+            </li>
+            <li class="uk-disabled uk-active">
+                <a href="#">
+                    <?php echo $mda_name;?>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- List of Institutions table -->
+    <div class='uk-padding-large'>
+        <table id="projects" class="uk-table uk-table-hover uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>Title</th>
+                    <th>OC Id</th>
+                    <th>Year</th>
+                    <th>Releases</th>
+                    <th>Delete</th>
+                    <th>Published</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php echo $projects?>
+            </tbody>
+        </table>
+        <div class = 'uk-container uk-container-small' style = 'color:white; font-size:22px'>
+            <ul class="uk-pagination uk-flex-center" uk-margin>
+                <?php echo $pagination;?>
+            </ul>
+        </div>
+        <!--- Delete Project -->
+        <div id="delete-project" class="uk-flex-top" uk-modal='bg-close: false'>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <input type="hidden" name="del_project_id" id="del_project_id" />
+                <p>Are you sure you want to delete project??</p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-project-not' data-status="success">Yes</button>
+                    <!-- Notification for deleting Institution -->
+                </div>
+            </div>
+        </div>
+        <!--- Delete release -->
+        <div id="delete-release" class="uk-flex-top" uk-modal='bg-close: false'>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <input type="hidden" name="del_rel_id" id="del_rel_id" />
+                <input type="hidden" name="del_type" id="del_type" />
+                <p>Are you sure you want to delete this release??</p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" onclick="deleteR()" type="button" id='delete-project-not' data-status="success">Yes</button>
+                    <!-- Notification for deleting Institution -->
+                </div>
+            </div>
+        </div>
+        <!-- xxx -->
+        <!-- Edit Project Modal -->
+        <div id="edit-project" uk-modal='bg-close: false'>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">Edit Project </h2>
+                </div>
+                <div class="uk-modal-body">
+                    <form id="edit-project-form">
+                        <input type="hidden" name="e_updated_by" value="<?php echo $_SESSION[" id "];?>"/>
+                        <input type="hidden" name="e_project_id" id="e_project_id" />
+                        <fieldset class="uk-fieldset">
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="e_title">Title</label>
+                                <input class="uk-input" type="text" placeholder="E.g " id='e_title' name='e_title' reqiured>
+                            </div>
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="description">Description</label>
+                                <textarea class="uk-textarea" rows="3" placeholder="" id="e_description" name="e_description" reqiured></textarea>
+                            </div>
+
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="e_year">Year</label>
+                                <select class="uk-select" name='e_year' id="e_year">
+                                        <option value='2010-2011'>2010-2011</option>
+                                        <option value='2011-2012'>2011-2012</option>
+                                        <option value='2012-2013'>2012-2013</option>
+                                        <option value='2013-2014'>2013-2014</option>
+                                        <option value='2014-2015'>2014-2015</option>
+                                        <option value='2015-2016'>2015-2016</option>
+                                        <option value='2016-2017'>2016-2017</option>
+                                        <option value='2017-2018'>2017-2018</option>
+                                        <option value='2018-2019'>2018-2019</option>
+                                        <option value='2019-2020'>2019-2020</option>
+                                        <option value='2020-2021'>2020-2021</option>
+                                        <option value='2021-2022'>2021-2022</option>
+                                </select>
+                            </div>
+
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="e_location">Location</label>
+                                <select class='uk-select' id="e_location" name="e_location">
+                                    <?php echo $districts?>
+                                </select>
+                                <label class="uk-form-label" for="e_status">Status</label>
+                                <select class='uk-select' id="e_status" name="e_status">
+                                    <option value='Active Complete'>Active Complete</option>
+                                    <option value='Inactive Complete'>Inactive Complete</option>
+                                    <option value='Active Incomplete'>Active Incomplete</option>
+                                    <option value='Inactive Incomplete'>Inactive Incomplete</option>
+                                    <option value="N/A">N/A</option>
+                                    <option value="Not Located">Not Located</option>
+                                </select>
+                            </div>
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="e_published">Published</label>
+                                <select class='uk-select' id="e_published" name="e_published">
+                                    <option value='yes'>Yes</option>
+                                    <option value='no'>No</option>
+                                </select>
+                            </div>
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="e_monitored">Monitored?</label>
+                                <select class='uk-select' id="e_monitored" name="e_monitored">
+                                    <option value='yes'>Yes</option>
+                                    <option value='no'>No</option>
+                                </select>
+                            </div>
+                            <div class="uk-width-1-1 uk-margin">
+                                <div class="uk-form-controls">
+                                    <select id="contractor" name='contractor' style='width: 100%'>
+                                    </select>
+                                    <script type="text/javascript">
+                                        $('#contractor').select2({
+                                            ajax: {
+                                                url: abs_path + "Release/getorg",
+                                                type: "get",
+                                                dataType: 'json',
+                                                data: function (params) {
+                                                    console.log(params.term);
+                                                    return { searchText: params.term }
+                                                },
+                                                processResults: function (data) {
+                                                    console.log(data);
+                                                    //var obj = JSON.parse(data);
+                                                    //console.log(obj);
+                                                    return {
+                                                        results: data
+                                                    }
+                                                },
+                                                cache: true
+                                            },
+                                            placeholder: "Search Contractor"
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="budget">Budget Amount</label>
+                                <input class="uk-input" type="number" placeholder=" " id='budget' name='budget' reqiured>
+                            </div>
+                            <div class="uk-width-1-1 uk-margin">
+                                <label class="uk-form-label" for="contract">Contract Amount</label>
+                                <input class="uk-input" type="number" placeholder=" " id='contract' name='contract' reqiured>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" id='edit-project-saved' type="button">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Releases Modal -->
+        <div id="view-releases" uk-modal='bg-close: false'>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">Releases
+                        <a href="#add-release" title="Add Release" uk-tooltip="pos: bottom" uk-toggle>
+                            <span class="uk-margin-small-right" uk-icon="icon: plus"></span>
+                        </a>
+                    </h2>
+                </div>
+                <div class="uk-modal-body">
+                    <div class='uk-width-auto'>
+                        <ul class="uk-list uk-list-large uk-list-divider" id="releases">
+
+                        </ul>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                        <button class="uk-button uk-button-primary" type="button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- xxx -->
+        <!-- Add Release Modal -->
+        <div id="add-release" uk-modal='bg-close: false'>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">Select Release</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <div>
+                        <div class="uk-margin uk-width-1-1">
+                            <form id="add-release-modal">
+                                <input type="hidden" id="project_id" />
+                                <select class="uk-select" name='add_rel_type' id="add_rel_type">
+                                    <option value='planning'>Planning</option>
+                                    <option value='tender'>Tender (Initiation)</option>
+                                    <option value='award'>Award</option>
+                                    <option value='contract'>Contract</option>
+                                    <option value='implementation'>Implementation</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary" type="button" id="add_release">Add</button>
+                </div>
+            </div>
+        </div>
+        <!-- xxx -->
+    </div>
+    <script src="<?php echo ABS_PATH?>js/form2js.js"></script>
+    <script src="<?php echo ABS_PATH?>js/js2form.js"></script>
+    <script src="<?php echo ABS_PATH?>js/mda-projects.js"></script>
+</body>
+
+</html>

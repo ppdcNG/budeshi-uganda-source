@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Manage Institution</title>
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/uikit.min.css" />
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit-icons.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/index.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-margin top" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src='<?php echo ABS_PATH;?>images/budeshi.png' / width='50'>
+            </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">
+                <h3><?php echo $cso_name;?></h3>
+            </div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#add-project" title="Create a New Project" uk-tooltip="pos: bottom" uk-toggle>
+                        <span class="uk-margin-small-right" uk-icon="icon: plus"></span>
+                    </a>
+                    <!-- Add Project Modal -->
+                    <div id="add-project" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Add a New Project </h2>
+                            </div>
+                            <div class="uk-modal-body">
+                                <form id="add-project">
+                                    <fieldset class="uk-fieldset">
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="title">Title</label>
+                                            <input class="uk-input" type="text" placeholder="E.g " id='title' name='title'
+                                                title="The name of the project that through which this contracting process is funded (if applicable)"
+                                                uk-tooltip="pos: bottom" reqiured>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="description">Description</label>
+                                            <textarea class="uk-textarea" rows="3" placeholder="" title="A summary description of the project."
+                                                uk-tooltip="pos: bottom" reqiured></textarea>
+                                        </div>
+                                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="location">Location</label>
+                                                    <input class="uk-input" type="text" placeholder="E.g " id='location'
+                                                        name='location' title="Location the projected will be carried out"
+                                                        uk-tooltip="pos: bottom" reqiured>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="title">Year</label>
+                                                    <select class="uk-select" name='year' title="The year this project was initiated"
+                                                        uk-tooltip="pos: bottom">
+                                                        <option value='' selected disabled>Select year</option>
+                                                        <option value='2014'>2014</option>
+                                                        <option value='2015'>2015</option>
+                                                        <option value='2016'>2016</option>
+                                                        <option value='2017'>2017</option>
+                                                        <option value='2018'>2018</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="title">Procuring Entity</label>
+                                                    <select class="uk-select" name='year' title="Procuring Entity implementing the project"
+                                                        uk-tooltip="pos: bottom">
+                                                        <option value='' selected disabled>Select year</option>
+                                                        <option value='2014'>Wild Life Authority</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="location">Budget Amount</label>
+                                                    <input class="uk-input" type="text" placeholder="E.g " id='location'
+                                                        name='budget_amount' title="Budgeted Amount For this project"
+                                                        uk-tooltip="pos: bottom" reqiured>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-margin uk-width-1-1">
+                                            <label class="uk-form-label" for="contract-amount">Contract Amount</label>
+                                            <input class="uk-input" type="text" placeholder="Contract Amount" id='location'
+                                                name='contract_amount' title="Contract Amount for this project"
+                                                uk-tooltip="pos: bottom" reqiured>
+                                        </div>
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="location">Contractor</label>
+                                                <input class="uk-input" type="text" placeholder="Contractor Name" id='location'
+                                                    name='location' title="Contractor Details" uk-tooltip="pos: bottom"
+                                                    reqiured>
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                    <label class="uk-form-label" for="location">Contractor Email</label>
+                                                <input name='contractor.email' class="uk-input" placeholder="Contractor Email">
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                    <label class="uk-form-label" for="location">Contractor Phone</label>
+                                                <input name='contractor.phone' class="uk-input" placeholder="Contractor Phone">
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-1">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="location">Contractor Address</label>
+                                                <input name='contractor.address' class="uk-input" placeholder="Contractor Address">
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" id='new-project-saved'
+                                    data-status="success" type="button">Save</button>
+                                <!-- Notification for saving new project -->
+                                <script>
+                                    jQuery('#new-project-saved').on('click', function () {
+                                        UIkit.notification($(this).data());
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- xxx -->
+                </li>
+            </ul>
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active">
+                                <a href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="cso-back">
+        <div>
+            <div class="uk-position-relative uk-light" uk-slider="center: true; autoplay: true; ">
+
+                <ul class="uk-slider-items uk-grid">
+                    <li class="uk-width-1-1 uk-transition-toggle">
+                        <div class="uk-panel">
+
+                            <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light">
+
+                                <p class="uk-text-center">To add a report to existing project, Use the search panel on
+                                    the left to search for projects.
+                                    Then click on edit on the first column of the row to add report.</p>
+                                <p class="uk-text-center">
+                                    To add report to non-existing projects, you must first of all create project by
+                                    clicking the
+                                    <span uk-icon="plus"></span> button on the nav bar top right corner of the page and
+                                    then enter details.
+                                </p>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+                <form id="search" class="uk-grid-small" uk-grid>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small " uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/inspect.png"
+                                    width="120%" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px;">
+                                    <input class="uk-input uk-border-rounded"
+                                        type="text" placeholder="Search Title" style="border: 1px solid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small " uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/toolbox.png"
+                                    width="120%" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px;">
+                                    <input class="uk-input uk-border-rounded" 
+                                        type="text" placeholder="Project Id" style="border: 1px solid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small" uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/home.png" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px">
+                                    <select id='select-mda' class="uk-select" name='organization' style='width: 100%'
+                                        multiple='multiple'>
+                                        <option value="dc">Universal Basic Education Commission</option>
+                                        <option value="le">National Primary Health Care Development Centre</option>
+                                        <option value="mj">Bureau of Public Procurement</option>
+                                        <option value="cos">Public and Private Development Centre</option>
+                                        <option value="ec">Bureau of Public Service Reforms</option>
+                                        <option value="jb">Customer Protection Council</option>
+                                    </select>
+                                    <script type="text/javascript">
+                                        $('#select-mda').select2({
+                                            placeholder: "Procuring Entity"
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <div class="uk-grid-small " uk-grid>
+                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/year.png" />
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin" style="max-width: 252px">
+                                    <select id='select-year' class="uk-select" name='organization' style='width: 100%'
+                                        multiple='multiple'>
+                                        <option value="">20154</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                    </select>
+                                    <script type="text/javascript">
+                                        $('#select-year').select2({
+                                            placeholder: "Project Years"
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-6">
+                        <button class="uk-button uk-button-primary uk-border-rounded">Search</button>
+                    </div>
+                    <div class="uk-width-1-6">
+                            <button class="uk-button uk-button-primary uk-border-rounded">Add New project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="uk-child-width-1-1" uk-grid>
+            <div>
+                <div class="uk-grid-collapse" id="stop" uk-grid>
+                    <div class="uk-width-expand@s  uk-padding ">
+                        <div>
+                            <table class="uk-table uk-table-hover uk-table-divider">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Procuring Entity</th>
+                                        <th>Project ID</th>
+                                        <th>Year</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Construction of 3 blocks of classroom</td>
+                                        <td>Wild Life Authority</td>
+                                        <td>PROJ-1123</td>
+                                        <td></td>
+                                        <td>
+                                            <a href="#edit-project" title="Add Report for this project" uk-tooltip="pos: bottom"
+                                                uk-toggle>
+                                                <span class="uk-margin-small-right" uk-icon="icon: plus"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="uk-child-width-1-1" uk-grid>
+
+        <div>
+            <div class="uk-grid-collapse" id="stop" uk-grid>
+                <div class="uk-width-expand@s  uk-padding ">
+                    <h2 class="uk-heading-bullet uk-text-center">Reports</h2>
+                    <div>
+                            <ul class="uk-list uk-list-large uk-list-striped">
+                                    <li>
+                                            <article class="uk-comment uk-comment-primary">
+                                                    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <img class="uk-comment-avatar" src="<?php echo ABS_PATH;?>images/slide1.jpg" width="80" height="80" alt="">
+                                                        </div>
+                                                        <div class="uk-width-expand">
+                                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Report on Projects Monitored by</a></h4>
+                                                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                                                                <li><a href="#">12 days ago</a></li>
+                                                                <li><span class="uk-text-primary">  Construction of 3 blocks of classroom</span> </li>
+                                                                <li><a  class = "uk-button uk-button-default uk-border-rounded" href="#">Edit <span uk-icon= "icon: edit"></span> </a></li>
+                                                            </ul>
+                                                            
+                                                        </div>
+                                                    </header>
+                                                    <div class="uk-comment-body">
+                                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                                    </div>
+                                                </article>
+                                    </li>
+                                    <li></li>
+                                    <li>List item 3</li>
+                                </ul>
+                        <!--- Delete Project -->
+                        <div id="delete-project" class="uk-flex-top" uk-modal>
+                            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+                                <p>Are you sure you want to delete project??</p>
+                                <div class="uk-modal-footer uk-text-right">
+                                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                    <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-project-not'
+                                        data-message="<span uk-icon='icon: check'></span>Project Successfully Deleted"
+                                        data-status="success">Yes</button>
+                                    <!-- Notification for deleting Institution -->
+                                    <script>
+                                        jQuery('#delete-project-not').on('click', function () {
+                                            UIkit.notification($(this).data());
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- xxx -->
+                        <!-- Edit Project Modal -->
+                        <div id="edit-project" uk-modal>
+                            <div class="uk-modal-dialog">
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+                                <div class="uk-modal-header">
+                                    <h2 class="uk-modal-title">Edit Project </h2>
+                                </div>
+                                <div class="uk-modal-body">
+                                    <form>
+                                        <fieldset class="uk-fieldset">
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <label class="uk-form-label" for="title">Title</label>
+                                                <input class="uk-input" type="text" placeholder="E.g " id='title' name='title'
+                                                    title="The name of the project that through which this contracting process is funded (if applicable)"
+                                                    uk-tooltip="pos: bottom" reqiured>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <label class="uk-form-label" for="description">Description</label>
+                                                <textarea class="uk-textarea" rows="3" placeholder="" title="A summary description of the project."
+                                                    uk-tooltip="pos: bottom" reqiured></textarea>
+                                            </div>
+                                            <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                                <div>
+                                                    <div class="uk-margin">
+                                                        <label class="uk-form-label" for="location">Location</label>
+                                                        <input class="uk-input" type="text" placeholder="E.g " id='location'
+                                                            name='location' title="Location the projected will be carried out"
+                                                            uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="uk-margin">
+                                                        <label class="uk-form-label" for="title">Year</label>
+                                                        <select class="uk-select" name='year' title="The year this project was initiated"
+                                                            uk-tooltip="pos: bottom">
+                                                            <option value='' selected disabled>Select year</option>
+                                                            <option value=''>2014</option>
+                                                            <option value='2015'>2015</option>
+                                                            <option value='2016'>2016</option>
+                                                            <option value='2017'>2017</option>
+                                                            <option value='2018'>2018</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="uk-modal-footer uk-text-right">
+                                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                    <button class="uk-button uk-button-primary uk-modal-close" id='edit-project-saved'
+                                        data-message="<span uk-icon='icon: check'></span>Edit Successfully Saved" type="button">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Notification for saving edit to project -->
+                        <script>
+                            jQuery('#edit-project-saved').on('click', function () {
+                                UIkit.notification($(this).data());
+                            });
+                        </script>
+                        <!-- xxx -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

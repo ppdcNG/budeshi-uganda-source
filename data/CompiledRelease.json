@@ -1,0 +1,27 @@
+{
+    "version": 1.1,
+    "publisher": {
+        "scheme": "OCP",
+        "name": "Public and Private Development Center",
+        "uri": "http:\/\/procurementmonitor.org"
+    },
+    "records": [
+        {
+            "ocid": "ocds-azam7x-255c27ng-tstmda",
+            "compiledRelease": {
+                "tags": [
+                    "compiled"
+                ],
+                "ocid": "ocds-azam7x-255c27ng-tstmda",
+                "contracts": [],
+                "awards": []
+            },
+            "releases": [],
+            "versionedRelease": null
+        }
+    ],
+    "packages": [],
+    "license": null,
+    "publishDate": "",
+    "publicationPolicy": null
+}

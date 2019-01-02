@@ -1,0 +1,393 @@
+<html>
+
+<head>
+    <title>Upload CSVs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
+    <script src='<?php echo ABS_PATH?>js/form2js.js'></script>
+</head>
+
+<body>
+
+    <div class='ui container'>
+            <div class="ui sure modal">
+                    <div class="ui icon header">
+                      <i class="warning icon"></i>
+                      Delete Insert
+                    </div>
+                    <div class="content">
+                      <p>Are you Sure you want to Undo Last Insert: mda : <span id = 'mda-name'></span> count : <span id = 'insert-count'></span></p>
+                    </div>
+                    <div class="actions">
+                      <div class="ui red basic cancel inverted button">
+                        <i class="remove icon"></i>
+                        No
+                      </div>
+                      <div class="ui green ok inverted button">
+                        <i class="checkmark icon"></i>
+                        Yes
+                      </div>
+                    </div>
+                  </div>
+        <div class="ui wait modal">
+            <i class="close icon"></i>
+            <div class="ui active dimmer">
+                <div class="header">
+                    Uploading Projects...
+                </div>
+                <div class="content">
+
+                    <div class="ui active indeterminate inline inverted loader"></div> Please Wait... This may take a while. Donot Close your browser or close your browser to avoid
+                    Errors
+
+                </div>
+            </div>
+        </div>
+        <div class="ui basic modal">
+                <div id = 'returnContent' class="content">
+                  
+                </div>
+              </div>
+        <div class="ui large header">OCDS Template Matcher</div>
+        <div class="ui menu">
+            <div class="header item">
+                How to use
+            </div>
+            <a class="item">
+                Last Insert id:
+                <?php echo $last_id;?>
+            </a>
+            <a class = 'item button' onclick = 'undo()'>
+                Undo Last Insert
+            </a>
+        </div>
+        <div class='ui grid'>
+            <div class='four wide column'>
+                <div class='ui relaxed grid' style='margin-top: 49%'>
+                    <div class='ui sticky'>
+                        <div class='grid'>
+                            <button onmousedown='putvalue("0")' value='0' class='ui button ui button five wide column'>A</button>
+                            <button onmousedown='putvalue("1")' value='1' class='ui button five wide column'>B</button>
+                            <button onmousedown='putvalue("2")' value='2' class='ui button five wide column'>C</button>
+                            <button onmousedown='putvalue("3")' value='3' class='ui button five wide column'>D</button>
+                            <button onmousedown='putvalue("4")' value='4' class='ui button five wide column'>E</button>
+                            <button onmousedown='putvalue("5")' value='5' class='ui button five wide column'>F</button>
+                            <button onmousedown='putvalue("6")' value='6' class='ui button five wide column'>G</button>
+                            <button onmousedown='putvalue("7")' value='7' class='ui button five wide column'>H</button>
+                            <button onmousedown='putvalue("8")' value='8' class='ui button five wide column'>I</button>
+                            <button onmousedown='putvalue("9")' value='9' class='ui button five wide column'>J</button>
+                            <button onmousedown='putvalue("10")' value='10' class='ui button five wide column'>K</button>
+                            <button onmousedown='putvalue("11")' value='11' class='ui button five wide column'>L</button>
+                            <button onmousedown='putvalue("12")' value='12' class='ui button five wide column'>M</button>
+                            <button onmousedown='putvalue("13")' value='13' class='ui button five wide column'>N</button>
+                            <button onmousedown='putvalue("14")' value='14' class='ui button five wide column'>O</button>
+                            <button onmousedown='putvalue("15")' value='15' class='ui button five wide column'>P</button>
+                            <button onmousedown='putvalue("16")' value='16' class='ui button five wide column'>Q</button>
+                            <button onmousedown='putvalue("17")' value='17' class='ui button five wide column'>R</button>
+                            <button onmousedown='putvalue("18")' value='18' class='ui button five wide column'>S</button>
+                            <button onmousedown='putvalue("19")' value='19' class='ui button five wide column'>T</button>
+                            <button onmousedown='putvalue("20")' value='20' class='ui button five wide column'>U</button>
+                            <button onmousedown='putvalue("21")' value='21' class='ui button five wide column'>V</button>
+                            <button onmousedown='putvalue("22")' value='22' class='ui button five wide column'>W</button>
+                            <button onmousedown='putvalue("23")' value='23' class='ui button five wide column'>X</button>
+                            <button onmousedown='putvalue("24")' value='24' class='ui button five wide column'>Y</button>
+                            <button onmousedown='putvalue("25")' value='25' class='ui button five wide column'>Z</button>
+                            <button onmousedown='putvalue("26")' value='26' class='ui button five wide column'>AA</button>
+                            <button onmousedown='putvalue("27")' value='27' class='ui button five wide column'>AB</button>
+                            <button onmousedown='putvalue("28")' value='28' class='ui button five wide column'>AC</button>
+                            <button onmousedown='putvalue("29")' value='29' class='ui button five wide column'>AD</button>
+                            <button onmousedown='putvalue("30")' value='30' class='ui button five wide column'>AE</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class='twelve wide column'>
+                <div class="ui styled fluid accordion">
+                    <form class='ui form' enctype="multipart/form-data" id='kruise'>
+                        <div class='active title'>
+                            <i class='dropdown icon'></i>
+                            Project
+                        </div>
+                        <div class='active content'>
+                            <div class='two wide field'>
+                                <label>Project Title</label>
+                                <input type='text' name='project.title'>
+                            </div>
+                            <div class='two wide field'>
+                                <label>Project Description</label>
+                                <input type='text' name='project.description'>
+                            </div>
+                            <div class='two wide field'>
+                                <label>Year</label>
+                                <input type='text' name='project.year'>
+                            </div>
+                            <div class='two wide field'>
+                                <label>State</label>
+                                <input type='text' name='project.state'>
+                            </div>
+                            <div class='two wide field'>
+                                <label>LGA</label>
+                                <input type='text' name='project.lga'>
+                            </div>
+                            <div class='two wide field'>
+                                <label>Category</label>
+                                <input type='text' name='project.category'>
+                            </div>
+                            <div class='four wide field'>
+                                <label>MDA</label>
+                                <select name='project.mda'>
+                                    <?php echo $mdas?>
+                                </select>
+                            </div>
+                            <div class='field three wide'>
+                                <input type='file' id="file" class='field' name='project.csv'>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Planning
+                        </div>
+                        <div class="content">
+                            <div class='two wide field'>
+                                <label>Budget Amount</label>
+                                <input type='text' name='planning.budget_amount' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Budget Source</label>
+                                <input type='text' name='planning.budget_source' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Budget Uri</label>
+                                <input type='text' name='planning.budget_uri' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Budget Uri</label>
+                                <input type='text' name='planning.rationale' />
+                            </div>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Tender
+                        </div>
+                        <div class="content">
+                            <div class='two wide field'>
+                                <label>Procurement Method</label>
+                                <input type='text' name='tender.procurement_method' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Award Criteria</label>
+                                <input type='text' name='tender.award_criteria' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Procurement Category</label>
+                                <input type='text' name='tender.category' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Tender Status</label>
+                                <input type='text' name='tender.status' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Tenderers</label>
+                                <input type='text' name='tender.tenderers' />
+                            </div>
+                            <div class='two wide field'>
+                                <label>Tenderers Amount</label>
+                                <input type='text' name='tender.tenderers_amount' />
+                            </div>
+                            <h4 class="ui dividing header">Tender Start Date</h4>
+                            <div class='fields'>
+                                <div class='four wide field'>
+                                    <label>Date</label>
+                                    <input type='text' name='tender.start_date.date'>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Format</label>
+                                    <select type='text' name='tender.start_date.format'>
+                                        <option value="" selected>Select Format</option>
+                                        <option value='dmy'>Day - Month - Year</option>
+                                        <option value='mdy'>Month - Day - Year</option>
+                                        <option value='english'>English</option>
+                                    </select>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Seperator</label>
+                                    <input type='text' name='tender.start_date.sep'>
+                                </div>
+                            </div>
+                            <h4 class="ui dividing header">Tender End Date</h4>
+                            <div class='fields'>
+                                <div class='four wide field'>
+                                    <label>Date</label>
+                                    <input type='text' name='tender.end_date.date'>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Format</label>
+                                    <select type='text' name='tender.end_date.format'>
+                                        <option value="" selected>Select Format</option>
+                                        <option value='dmy'>Day - Month - Year</option>
+                                        <option value='mdy'>Month - Day - Year</option>
+                                        <option value='english'>English</option>
+                                    </select>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Seperator</label>
+                                    <input type='text' name='tender.end_date.sep'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Award
+                        </div>
+                        <div class="content">
+                            <div class='two wide field'>
+                                <label>Award Status</label>
+                                <input type='text' name='award.status' />
+                            </div>
+
+                            <h4 class="ui dividing header">Award Date</h4>
+                            <div class='fields'>
+                                <div class='four wide field'>
+                                    <label>Date</label>
+                                    <input type='text' name='award.date.date'>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Format</label>
+                                    <select type='text' name='award.date.format'>
+                                        <option value="" selected>Select Format</option>
+                                        <option value='dmy'>Day - Month - Year</option>
+                                        <option value='mdy'>Month - Day - Year</option>
+                                        <option value='english'>English</option>
+                                    </select>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Seperator</label>
+                                    <input type='text' name='award.date.sep'>
+                                </div>
+                            </div>
+
+                            <h4 class="ui dividing header">Award Value</h4>
+                            <div class='fields'>
+                                <div class='two wide field'>
+                                    <label>Award Amount</label>
+                                    <input type='text' name='award.amount' />
+                                </div>
+                                <div class='two wide field'>
+                                    <label>Currency</label>
+                                    <input type='text' name='award.currency' />
+                                </div>
+
+                            </div>
+                            <div class='two wide field'>
+                                <label>Suppliers</label>
+                                <input type='text' name='award.suppliers' />
+                            </div>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Contract
+                        </div>
+                        <div class="content">
+                            <div class='two wide field'>
+                                <label>Contract Status</label>
+                                <input type='text' name='contract.status' />
+                            </div>
+                            <h4 class="ui dividing header">Contract Value</h4>
+                            <div class='fields'>
+                                <div class='two wide field'>
+                                    <label>Contract Amount</label>
+                                    <input type='text' name='contract.amount' />
+                                </div>
+                                <div class='two wide field'>
+                                    <label>Currency</label>
+                                    <input type='text' name='contract.currency' />
+                                </div>
+                            </div>
+                            <h4 class="ui dividing header">Contract Date Signed</h4>
+                            <div class='fields'>
+                                <div class='four wide field'>
+                                    <label>Date</label>
+                                    <input type='text' name='contract.date_sign.date'>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Format</label>
+                                    <select type='text' name='contract.date_sign.format'>
+                                        <option value="" selected>Select Format</option>
+                                        <option value='dmy'>Day - Month - Year</option>
+                                        <option value='mdy'>Month - Day - Year</option>
+                                        <option value='english'>English</option>
+                                    </select>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Seperator</label>
+                                    <input type='text' name='contract.date_sign.sep'>
+                                </div>
+                            </div>
+                            <h4 class="ui dividing header">Contract Start Date</h4>
+                            <div class='fields'>
+                                <div class='four wide field'>
+                                    <label>Date</label>
+                                    <input type='text' name='contract.start_date.date'>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Format</label>
+                                    <select type='text' name='contract.start_date.format'>
+                                        <option value="" selected>Select Format</option>
+                                        <option value='dmy'>Day - Month - Year</option>
+                                        <option value='mdy'>Month - Day - Year</option>
+                                        <option value='english'>English</option>
+                                    </select>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Seperator</label>
+                                    <input type='text' name='contract.start_date.sep'>
+                                </div>
+                            </div>
+                            <h4 class="ui dividing header">Contract End Date</h4>
+                            <div class='fields'>
+                                <div class='four wide field'>
+                                    <label>Date</label>
+                                    <input type='text' name='contract.end_date.date'>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Format</label>
+                                    <select type='text' name='contract.end_date.format'>
+                                        <option value="" selected>Select Format</option>
+                                        <option value='dmy'>Day - Month - Year</option>
+                                        <option value='mdy'>Month - Day - Year</option>
+                                        <option value='english'>English</option>
+                                    </select>
+                                </div>
+                                <div class='four wide field'>
+                                    <label>Seperator</label>
+                                    <input type='text' name='contract.end_date.sep'>
+                                </div>
+                            </div>
+                            <div class='two wide field'>
+                                    <label>Contract Period (Days)</label>
+                                    <input type='text' name='contract.period'/>
+                                </div>
+
+                        </div>
+                </div>
+                <button class='ui button' type='submit'>Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $('.ui.accordion').accordion()
+        function putvalue(value) {
+            console.log(value);
+            let ele = $(document.activeElement)
+            ele.val(value);
+        }
+    </script>
+    <script src="<?php echo ABS_PATH?>/js/matcher.js"></script>
+</body>
+
+</html>

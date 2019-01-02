@@ -1,0 +1,391 @@
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="shortcut icon" href="./favicon.ico.png" type="image/x-icon" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/uikit.min.css" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/styles.css" />
+
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit-icons.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Mogra|Pangolin|Quicksand|Secular+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Fascinate+Inline|Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="<?php echo ABS_PATH?>js/index1.js"></script>
+
+    <!--Select 2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+    <nav class="uk-navbar-container uk-navbar-transparent top" uk-sticky uk-navbar>
+
+        <div class="uk-navbar-center uk-light">
+
+            <div class="uk-navbar-center-left">
+                <div>
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active">
+                            <a href="#" class="uk-button-text">Home</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img class='smaller-logo' src='<?php echo ABS_PATH;?>images/budeshi-logo.png' width="25%">
+            </a>
+            <div class="uk-navbar-center-right">
+                <div>
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a href="#" class="uk-button-text">Export Data</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li>
+                                        <a href="#">Json</a>
+                                    </li>
+
+                                    <li class="uk-nav-divider"></li>
+                                    <li>
+                                        <a href="#">Download CSV</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <ul class="uk-breadcrumb">
+        <li>
+            <a href="<?php echo ABS_PATH;?>/Home/#tables">Home</a>
+        </li>
+        <li>
+            <span href="#">View Project</span>
+        </li>
+    </ul>
+    <div class='uk-container'>
+
+        <div class='project-overview' id='project-overview'>
+            <div>
+                <div class='uk-flex-center uk-flex uk-margin-top'>
+                        <p class='uk-text-center uk-text-large comforta' style="color: #11998e"><?php echo $db->projectTitle?></p>
+    
+                    </div>
+                <div class='uk-display-block uk-flex uk-flex-center uk-text-center'>
+                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                            <div class='uk-float-right'>
+                                <em><a href="" class="uk-margin-left" uk-icon="icon: social" title="Share" uk-tooltip="pos: bottom" uk-toggle="target: #offcanvas-nav"></a></em>
+                            </div>
+                            <div class='uk-float-left'>
+                                <em><a href="" class="" uk-icon="icon: comment" title="Click to give feedback on the project" uk-tooltip="pos: bottom" uk-toggle="target: #feedback-form"></a></em>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+                <div class=''>
+                    <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+                        <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+                            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                                <li class="uk-nav-header">Tell people what you've seen here</li>
+                                <li class="uk-nav-divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <span class="uk-margin-small-right" uk-icon="icon: instagram"></span>Instagram</a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/share" data-hashtags="budeshi" data-related="ppmonitorNG" data-show-count="false">
+                                        <span class="uk-margin-small-right" uk-icon="icon: twitter"></span>Twitter</a>
+                                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="uk-margin-small-right" uk-icon="icon: facebook"></span>Facebook</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="uk-margin-small-right" uk-icon="icon: linkedin"></span>Linkedin</a>
+                                </li>
+                                <li class="uk-nav-divider"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="uk-border-rounded uk-margin">
+                    <?php echo$parties?>
+                   
+                </div>
+            <div id='ubecproject'>
+                <ul class="uk-flex uk-flex-center" uk-tab>
+                    <?php echo $nav_tab?>
+                </ul>
+
+                <ul class="uk-switcher uk-margin">
+                    <?php echo $output?>
+                </ul>
+            </div>
+        </div>
+        <div class='Feedback uk-margin uk-padding'>
+            <h1 class="uk-heading mogra">
+                <span>Comments Section</span>
+            </h1>
+            <br>
+            <ul class="uk-comment-list uk-list-divider uk-margin">
+                <?php echo $feedbacks?>
+            </ul>
+        </div>
+        <!--Give Feeback -->
+        <div class='give-feedback'>
+            <form id='feedback-form' class="uk-form-stacked uk-container">
+
+                <input id='project-id' type='hidden' name='projectId' value="<?php echo $id?>" />
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Contact Information</legend>
+                    <div class='uk-grid-small uk-child-width-1-2@s uk-padding' uk-grid>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">First Name</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" name='firstname' id="form-stacked-text" type="text" placeholder="John">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Last Name</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" name='lastname' id="form-stacked-text" type="text" placeholder="Doe">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Email</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" name='email' id="form-stacked-text" type="email" placeholder="john.doe@email.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Phone</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" name='phone' id="form-stacked-text" type="tel" placeholder="+234-80-234-234-59">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">Comment</legend>
+                    <div>
+                        <div class="uk-padding">
+                            <label class="uk-form-label" for="form-stacked-text">Comment/Report</label>
+                            <div class="uk-form-controls">
+                                <textarea class="uk-textarea" name='comment' rows="5" placeholder="Write your feedback concerning this project"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class='uk-grid-small uk-child-width-1-2@s uk-padding' uk-grid>
+                    <div>
+                        <button class="uk-button uk-button-default uk-float-left" type="button">Cancel</button>
+                    </div>
+                    <div>
+                        <button class="uk-button uk-button-primary uk-modal-close" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--View Organisation Modal-->
+        <div id="view-org" class="uk-modal-container" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header top">
+
+                    <h2 class='uk-text-warning uk-text-center' uk-tooltip='Name' id='org-name'>Dangote Cement</h2>
+
+                    <div class='uk-flex uk-flex-center uk-text-center'>
+                        <p id='rc-no'>RC Number: 450245-CAC
+                        </p>
+                    </div>
+                </div>
+                <div class="uk-modal-body">
+                    <div class=''>
+                        <div class='address uk-margin-small'>
+                            <div>
+                                <div class="uk-text-center">
+                                    <!-- Streets icon by Icons8 -->
+                                    <span uk-icon="icon: home"></span>
+                                    <p uk-tooltip='Address' class="uk-display-inline-block" id='address'></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='contact-person uk-margin-small'>
+
+                            <div class='uk-child-width-1-3@l uk-grid-collapse uk-child-width-1-1@s' uk-grid>
+                                <div>
+                                    <div class="uk-text-center">
+
+                                        <span uk-icon="icon: user"></span>
+                                        <p class="uk-display-inline-block" uk-tooltip='Contact Person' id='contact-person'>Rotimi Ikechuckwu</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="uk-text-center">
+
+                                        <span uk-icon="icon: mail"></span>
+                                        <p class="uk-display-inline-block" uk-tooltip='Email'>
+                                            <a href="mailto:name@rapidtables.com" class='uk-link-text' id='email-addrs'>joshstones@wef.org</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="uk-text-center">
+
+                                        <span uk-icon="icon: receiver"></span>
+                                        <p class="uk-display-inline-block" uk-tooltip='Phone Number' id='telephone'>234 703 924 5256</p>
+                                    </div>
+                                </div>
+                                <div Class='uk-width-1-1'>
+                                    <div class="uk-card uk-card-body uk-text-center uk-text-large uk-text-primary">
+
+                                        <p>
+                                            <a href='#!' class='uk-link-text' uk-tooltip='Webite' id='website'>www.dangotecement.com</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Nav Bar Bottom-->
+    <div class="" style="background-color: #fffaf2;" id="footer-stick">
+            <div class='uk-container'>
+                <div class='uk-padding uk-margin-large-top uk-text-medium uk-text-center uk-flex uk-flex-center comforta' id="who">
+                    <p>
+                        Budeshi Uganda is an initiative of the <a href="https://africafoicentre.org">Africa Freedom of Information Centre</a>                        in partnership with the <a href="http://procurementmonitor.org/ppdc/"> Public and Private Develoment Centre.</a>
+                    </p>
+                </div>
+                <div class='uk-text-center uk-flex uk-flex-center comforta' id="who">
+                    <p>Implementation support is provided by<a href="http://www.pau.edu.ng"> Pan-Atlantic University</a> and
+                        <a href='http://ptcij.org/'>Premium Times Centre for Investigative
+                                Journalism</a></p>
+                </div>
+                <div class='uk-container'>
+                    <div class='uk-grid-small uk-child-width-1-4 uk-margin' uk-grid>
+                        <div>
+                            <div class='uk-margin'>
+                                <a href='https://africafoicentre.org'>
+                                      <img src='<?php echo ABS_PATH?>images/logo.png'/>
+                                    </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class='uk-margin'>
+                                <a href='http://procurementmonitor.org/ppdc/'>
+						<img src='<?php echo ABS_PATH?>images/ppdc-logo2.png' width="35%"/>
+					  </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class='uk-margin'>
+                                <a href='http://smc.edu.ng/'>
+						<img src='<?php echo ABS_PATH?>images/smc.png' width="35%" />
+					  </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class='uk-margin'>
+                                <a href='http://ptcij.org/'>
+						<img src='<?php echo ABS_PATH?>images/ptcij.png' width="35%" />
+					  </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class='uk-container'>
+                <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                    <div>
+                        <div class='uk-text-medium uk-text-center uk-flex uk-flex-center comforta uk-float-right'>
+                            <p>
+                                Proudly Supported by
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='uk-grid-collapse uk-child-width-1-2' uk-grid>
+                            <div class="uk-padding-remove">
+                                <div class='uk-margin uk-flex uk-flex-center uk-float-right'>
+                                    <a href='https://www.omidyar.com/' class="uk-padding-remove uk-float-right'">
+						<img src='<?php echo ABS_PATH?>images/omd.png' width="40%" />
+					  </a>
+                                </div>
+                            </div>
+                            <div class="uk-padding-remove">
+                                <div class='uk-flex uk-flex-center'>
+                                    <a href='https://www.macfound.org/' class="uk-padding-remove">
+						<img src='<?php echo ABS_PATH?>images/macarthur-logo.png' width="80%" />
+					  </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='uk-text-small uk-text-center uk-flex uk-flex-center comforta uk-float-right uk-width-1-1' style="background-color: #fffaf2;">
+                <p>
+                    © 2018, PPDC. <a  href="#terms" uk-toggle>Terms</a>
+                </p>
+                <!-- This is the modal -->
+                <div id="terms" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h4 class="uk-modal-title comforta">CREATIVE COMMON ATTRIBUTION SHARE -ALIKE LICENSE</h4>
+                        <p>Budeshi.ug and all logos, products, services or other content on www.budeshi.ug or other mobile download
+                            platforms are the intellectual property of the Africa Freedom of Information Centre (AFIC). This
+                            work can be re-used and re-distributed, in whole or in part, for a profit or nonprofit purposes
+                            as long as the creator is appropriately credited, and any derivative shall be made available
+                            under the same, similar or a compatible license.
+                        </p>
+                        <p class="uk-text-warning uk-text-large">
+                            DISCLAIMER
+                        </p>
+                        <p>AFIC will not be responsible for any misrepresentation upon reproduction of data available on Budeshi
+                            except such reproduction has been, prior to publication, reviewed and certified by AFIC.
+                        </p>
+                        <p class="uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                            <button class="uk-button uk-button-primary uk-modal-close pallette10" type="button">Ok, got it!</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <script src="<?php echo ABS_PATH?>js/form2js.js"></script>
+    <script src="<?php echo ABS_PATH?>js/budeshi.js"></script>
+</body>
+
+</html>

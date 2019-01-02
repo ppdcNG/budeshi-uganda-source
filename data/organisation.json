@@ -1,0 +1,22 @@
+{
+    "identifier": {
+        "scheme": "",
+        "legalName": "",
+        "id": null,
+        "uri": ""
+    },
+    "address": {
+        "streetAddress": null,
+        "locality": null,
+        "region": null,
+        "postalCode": null,
+        "countryName": "Uganda"
+    },
+    "contactPoint": {
+        "name": "",
+        "telephone": null,
+        "email": null,
+        "url": null,
+        "faxNumber": ""
+    }
+}

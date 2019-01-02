@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="shortcut icon" href="./favicon.ico.png" type="image/x-icon" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/uikit.min.css" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/styles.css" />
+
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
+    <script src="<?php echo ABS_PATH;?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit-icons.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Mogra|Pangolin|Quicksand|Secular+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Fascinate+Inline|Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="<?php echo ABS_PATH?>js/index1.js"></script>
+    <script src="<?php echo ABS_PATH?>js/accounting.min.js"></script>
+    <script src="<?php echo ABS_PATH ?>js/jquery.countTo.js"></script>
+
+    <!--Select 2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <!--Datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/r-2.2.1/sl-1.2.5/datatables.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.5.1/b-flash-1.5.1/b-html5-1.5.1/r-2.2.1/sl-1.2.5/datatables.min.js"></script>
+
+    <!--High Charts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+</head>
+
+<body>
+
+    <div class="uk-offcanvas-content">
+        <nav class="uk-navbar-container uk-navbar-transparent top" uk-sticky uk-navbar>
+
+            <div class="uk-navbar-center uk-light">
+
+                <div class="uk-navbar-center-left">
+                    <div>
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active">
+                                <a href="#" class="uk-button-text">Home</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="uk-navbar-item uk-logo" href="#">
+                    <img class='smaller-logo' src='<?php echo ABS_PATH;?>images/budeshi-logo.png' width="25%">
+                </a>
+                <div class="uk-navbar-center-right">
+                    <div>
+                        <ul class="uk-navbar-nav">
+                            <li>
+                                <a href="#" class="uk-button-text">Export Data</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li>
+                                            <a href="<?php echo ABS_PATH;?>/Home/download/">Json</a>
+                                        </li>
+
+                                        <li class="uk-nav-divider"></li>
+                                        <li>
+                                            <a href="<?php echo ABS_PATH;?>Home/download/">Download CSV</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="uk-active">
+                                <a href="<?php echo ABS_PATH;?>CSO/" class="uk-button-text">CSO</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <!--         
+		<div class="uk-margin-remove uk-width-1-1 border-bottom slick" uk-sticky="offset: 78">
+            </div>
+            <div class="uk-margin-remove uk-width-1-1 border-bottom slick red" uk-sticky="offset: 81">
+                </div> -->
+        <!-- 
+		<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+			<div class="uk-offcanvas-bar uk-background-default">
+
+				<button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+
+
+			</div>
+		</div> -->
+
+        <!-- 
+        <div class="uk-width-1-1 border-bottom slick" uk-sticky="offset: 78">
+        </div> -->
+
+        <div class="uk-child-width-1-1" uk-grid>
+            <div>
+                <div class="uk-position-relative uk-light" uk-slider="center: true; autoplay: true; ">
+
+                    <ul class="uk-slider-items uk-grid">
+                        <li class="uk-width-1-1 uk-transition-toggle">
+                            <div class="uk-panel">
+                                <img src="<?php echo ABS_PATH;?>images/flag.png" alt="" width="100%">
+                                <div class="uk-overlay uk-overlay-primary uk-position-cover uk-text-center">
+                                    <!-- <h3 class="uk-margin-remove">Open Contracting for Uganda</h3> -->
+
+                                </div>
+                                <!-- <div class="uk-overlay uk-overlay-primary uk-position-center uk-text-center uk-transition-slide-bottom">
+                                                    <h3 class="uk-margin-remove">Bottom</h3>
+                                                    <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                </div> -->
+                            </div>
+                        </li>
+                        <!-- <li class="uk-width-1-1 uk-transition-toggle">
+                            <div class="uk-panel">
+                                <img src="<?php echo ABS_PATH;?>images/analysis/2.png" alt="" width="100%">
+                                <div class="uk-overlay uk-overlay-primary uk-position-cover uk-text-center uk-transition-slide-bottom">
+                                    <h3 class="uk-margin-remove">Check out compliled analysis from Budeshi Data</h3>
+                                    <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="uk-width-1-1 uk-transition-toggle">
+                            <div class="uk-panel">
+                                <img src="<?php echo ABS_PATH;?>images/analysis/3.png" alt="" width="100%">
+                                <div class="uk-overlay uk-overlay-primary uk-position-cover uk-text-center uk-transition-slide-bottom">
+                                    <h3 class="uk-margin-remove">Read Our Latest Stories and procurement monitors reports</h3>
+                                    <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
+                            </div>
+                        </li> -->
+
+                    </ul>
+
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                        uk-slider-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                        uk-slider-item="next"></a>
+
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div class="uk-grid-small" uk-grid>
+                        <div class="uk-width-1-3@s uk-padding" style='max-width: 400px' uk-height-viewport="expand: true">
+                            <h3 class="comforta">Find Projects</h3>
+                            <form id='finder'>
+                                <div class="uk-grid-small uk-child-width-1-1" uk-grid>
+
+                                    <div class="uk-padding-small">
+                                        <div class="uk-grid-small" uk-grid>
+                                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/home.png" />
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <div class="uk-margin">
+                                                    <select id='select-mda' class="uk-select" name='mda' style='width: 100%'
+                                                        multiple='multiple'>
+                                                        <?php echo $mdas;?>
+                                                    </select>
+                                                    <script type="text/javascript">
+                                                        $('#select-mda').select2({
+                                                            placeholder: "Procuring Entity"
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                            <!-- <hr class="uk-flex uk-flex-center" style="border-width: 3px"> -->
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small">
+                                        <div class="uk-grid-small" uk-grid>
+                                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/inspect.png" />
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <div class="uk-margin">
+                                                    <input class='uk-input' type='text' name='text' placeholder="Seach Project Title" />;
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small">
+                                        <div class="uk-grid-small " uk-grid>
+                                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/year.png" />
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <div class="uk-margin">
+                                                    <select id='select-year' class="uk-select" name='year' style='width: 100%'
+                                                        multiple='multiple'>
+                                                        <option value="2016-2017">2016-2017</option>
+                                                        <option value="2015-2016">2015-2016</option>
+                                                        <option value="2014-2015">2014-2015</option>
+                                                        <option value="2013-2014">2013-2014</option>
+
+                                                    </select>
+                                                    <script type="text/javascript">
+                                                        $('#select-year').select2({
+                                                            placeholder: "Project years"
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small">
+                                        <div class="uk-grid-small " uk-grid>
+                                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/architect.png" />
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <div class="uk-margin">
+                                                    <select id='select-org' name='contractor' style='width: 100%'
+                                                        multiple='multiple'>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small">
+                                        <div class="uk-grid-small" uk-grid>
+                                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/toolbox.png" />
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <div class="uk-margin" title="Filter Different Procurement Method"
+                                                    uk-tooltip>
+                                                    <select id='select-status' class='uk-select' name='category' style='width: 100%'
+                                                        multiple='multiple'>
+                                                        <option value="goods">Goods</option>
+                                                        <option value="services">Services</option>
+                                                        <option value="works">Works</option>
+                                                        <option value="consultancy">Consultancy</option>
+                                                    </select>
+                                                    <script type="text/javascript">
+                                                        $('#select-status').select2({
+                                                            placeholder: "Project Category"
+                                                            // dropdownParent: $('#find-project')
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small">
+                                        <div class="uk-grid-small" uk-grid>
+                                            <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                                <img class="uk-transition-scale-up uk-transition-opaque" src="<?php echo ABS_PATH;?>images/status.png" />
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <div class="uk-margin" title="Filter Different Procurement Method"
+                                                    uk-tooltip>
+                                                    <select id='select-method' class='uk-select' name='method' style='width: 100%'
+                                                        multiple='multiple'>
+                                                        <option value="limited">Limited</option>
+                                                        <option value="selective">Selective</option>
+                                                        <option value="open">Open</option>
+                                                        <option value="direct">Direct</option>
+                                                    </select>
+                                                    <script type="text/javascript">
+                                                        $('#select-method').select2({
+                                                            placeholder: "Procurement Method"
+                                                            // dropdownParent: $('#find-project')
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='uk-padding-small'>
+                                    <button id='finderFind' class='uk-input uk-button uk-button-default' style="color:white;background-color:indianred">Find
+                                        Project</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="uk-width-expand@s  uk-padding ">
+                            <ul class="uk-tab-bottom uk-swticher uk-flex uk-flex-center" uk-tab>
+                                <li class="uk-active">
+                                    <a href="#">Summary</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tables</a>
+                                </li>
+                                <li>
+                                    <a href="#">Charts</a>
+                                </li>
+                                <li>
+                                    <a href='#'>Contract Monitoring</a>
+                                </li>
+                            </ul>
+                            <ul class="uk-switcher uk-margin">
+                                <li>
+                                    <!-- <h3 class="uk-text-center">Summary</h3> -->
+
+                                    <div class="uk-grid-large uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-grid-match"
+                                        uk-grid>
+
+                                        <div class="">
+                                            <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body"
+                                                uk-grid>
+                                                <div class="uk-width-auto">
+                                                    <img class="uk-margin-auto" src="<?php echo ABS_PATH;?>images/abacus.png"
+                                                        alt="Border circle">
+                                                </div>
+                                                <div class="uk-width-expand">
+                                                    <div class="uk-child-width-1-1" uk-grid>
+                                                        <div class="uk-margin-remove card-font">
+                                                            Total Number of Projects
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                </div>
+                                                <div class="uk-width-1-1 card-font figure">
+                                                    <span id='total'>
+                                                        <?php echo $total;?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="" onclick="viewSummary('highest')">
+                                            <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body"
+                                                uk-grid>
+                                                <div class="uk-width-auto">
+                                                    <img class="uk-margin-auto" src="<?php echo ABS_PATH;?>images/cashbox.png"
+                                                        alt="Border circle">
+                                                </div>
+                                                <div class="uk-width-expand">
+                                                    <div class="uk-child-width-1-1" uk-grid>
+                                                        <div class="uk-margin-remove card-font">
+                                                            The Highest Contract Amount
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                </div>
+                                                <div class="uk-width-1-1 card-font figure">
+                                                    UGX
+                                                    <span id='highest'>
+                                                        <?php echo $highest;?></span>
+                                                </div>
+                                                <input type='hidden' id='highid' value='<?php echo $highid;?>' />
+                                            </div>
+                                        </div>
+                                        <div class="" onclick="viewSummary('lowest')">
+                                            <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body "
+                                                uk-grid>
+                                                <div class="uk-width-auto">
+                                                    <img class="uk-margin-auto" src="<?php echo ABS_PATH;?>images/bill.png"
+                                                        alt="Border circle">
+                                                </div>
+                                                <div class="uk-width-expand">
+                                                    <div class="uk-child-width-1-1" uk-grid>
+                                                        <div class="uk-margin-remove card-font">
+                                                            Lowest Contract Amount
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                </div>
+                                                <div class="uk-width-1-1 card-font figure">
+                                                    UGX
+                                                    <span=id='lowest'>
+                                                        <?php echo $lowest;?></span>
+
+                                                </div>
+                                            </div>
+                                            <input type='hidden' id='lowestid' value='<?php echo $lowestid;?>' />
+                                        </div>
+                                        <div class="uk-width-1-1">
+                                            <a class="uk-link-reset uk-flex uk-flex-center" uk-toggle="target: #toggle-animation-multiple; animation:  uk-animation-slide-left, uk-animation-slide-bottom">
+                                                <span uk-icon="icon: more"></span>
+                                            </a>
+                                        </div>
+                                        <div id="toggle-animation-multiple" class="uk-margin-small uk-width-1-1">
+                                            <div class="uk-grid-large uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-grid-match"
+                                                uk-grid>
+                                                <div class="">
+                                                    <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body"
+                                                        uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <img class="uk-margin-auto" src="<?php echo ABS_PATH;?>images/couple.png"
+                                                                alt="Border circle">
+                                                        </div>
+                                                        <div class="uk-width-expand">
+                                                            <div class="uk-child-width-1-1" uk-grid>
+                                                                <div class="uk-margin-remove card-font">
+                                                                    Contracts Sum
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                        </div>
+                                                        <div class="uk-width-1-1 card-font figure">
+                                                            <span id='sum'>
+                                                                <?php echo $total_sum;?></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="">
+                                                    <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body"
+                                                        uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <img class="uk-margin-auto" src="<?php echo ABS_PATH;?>images/hand_handshake.png"
+                                                                alt="Border circle">
+                                                        </div>
+                                                        <div class="uk-width-expand">
+                                                            <div class="uk-child-width-1-1" uk-grid>
+                                                                <div class="uk-margin-remove card-font big">
+                                                                    Consultancy Services
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                        </div>
+                                                        <div class="uk-width-1-1 card-font figure">
+                                                            <span id='services'>
+                                                                <?php echo $services;?></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body"
+                                                        uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <img class="uk-margin-auto" src="<?php echo ABS_PATH;?>images/hand_handshake.png"
+                                                                alt="Border circle">
+                                                        </div>
+                                                        <div class="uk-width-expand">
+                                                            <div class="uk-child-width-1-1" uk-grid>
+                                                                <div class="uk-margin-remove card-font big">
+                                                                    Non-Consultancy Services
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                        </div>
+                                                        <div class="uk-width-1-1 card-font figure">
+                                                            <span id='services'>
+                                                                <?php echo $noncon;?></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body"
+                                                        uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <img class="uk-margin-auto" src="<?php echo ABS_PATH;?>images/goods.png"
+                                                                alt="Border circle">
+                                                        </div>
+                                                        <div class="uk-width-expand">
+                                                            <div class="uk-child-width-1-1" uk-grid>
+                                                                <div class="uk-margin-remove card-font big">
+                                                                    Supplies
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                        </div>
+                                                        <div class="uk-width-1-1 card-font figure">
+                                                            <span id='goods'>
+                                                                <?php echo $goods;?></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="uk-grid-collapse uk-text-center uk-padding-small uk-card uk-card-default uk-card-body"
+                                                        uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <img class=" uk-margin-auto" src="<?php echo ABS_PATH;?>images/hammer.png"
+                                                                alt="Border circle">
+                                                        </div>
+                                                        <div class="uk-width-expand">
+                                                            <div class="uk-child-width-1-1" uk-grid>
+                                                                <div class="uk-margin-remove card-font big">
+                                                                    Works
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="uk-width-1-1 border-bottom uk-margin-small">
+                                                        </div>
+                                                        <div class="uk-width-1-1 card-font figure">
+                                                            <span id='works'>
+                                                                <?php echo $works;?></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </li>
+                                <li>
+                                    <table id="bud-table" class="uk-table uk-table-small uk-table-divider stripe">
+                                        <thead>
+                                            <tr>
+                                                <td></td>
+                                                <th data-priority='1'>Title</th>
+
+                                                <th>Contractor</th>
+                                                <th data-priority='3'>Budget Amount (UGX)</th>
+                                                <th data-priority="2">Contract Amount (UGX)</th>
+                                                <th data-priotiry="4">Year</th>
+                                                <th data-priority="5">Procuring Entity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <p class='uk-margin'>
+                                        <button id="clearSelect" class="uk-button uk-button-secondary">Clear Selection</button>
+                                        <button id="comparebttn" class="uk-button uk-button-primary">Compare</button>
+                                    </p>
+                                    <div id='comparison' class="uk-container uk-container-small">
+
+                                    </div>
+
+                                </li>
+                                <li>
+
+                                    <div class='charts'>
+                                        <div class='uk-child-width-1-3' uk-grid>
+                                            <div class="uk-margin">
+                                                <div class="uk-form-controls">
+                                                    <select onchange="plot_chart()" id="type" class="uk-select" id="form-stacked-select">
+                                                        <option value="area">Area</option>
+                                                        <option value="line">Line</option>
+                                                        <option value="bar">Bar</option>
+                                                        <option value="column" selected>Column</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-form-controls">
+                                                    <select onchange="plot_chart()" id="by" class="uk-select" id="form-stacked-select">
+                                                        <option value="year">Year</option>
+                                                        <option value="category">category</option>
+                                                        <option value="short_name" selected>Procuring Entity</option>
+                                                        <option value='method'>Procurement Method</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-form-controls">
+                                                    <select onchange="plot_chart()" id="order" class="uk-select" id="form-stacked-select">
+                                                        <option value="DESC">Descending</option>
+                                                        <option value="ASC">Ascending</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="charts-container">
+                                            <div id='chart' class="uk-container uk-container-small">
+
+                                            </div>
+                                            <div id='achart' class="uk-container uk-container-small"></div>
+
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div>
+                                        <h3>Contracts Monitoring</h3>
+                                        <p>Browse through and read reports of public procurements and contract by
+                                            various civil society organisations<br />
+                                        </p>
+                                        <hr class="uk-divider-icon">
+                                        <div id="cso-reports">
+                                            <div class="uk-child-width-1-1" uk-grid>
+                                                <div class="uk-width-expand">
+                                                    <article class="uk-comment">
+                                                        <header class="uk-comment-header uk-grid-medium uk-flex-middle"
+                                                            uk-grid>
+                                                            <div class="uk-width-auto">
+                                                                <img class="uk-comment-avatar" src="../images/slide1.jpg"
+                                                                    width="100" height="100" alt="">
+                                                            </div>
+                                                            <div class="uk-width-expand">
+                                                                <h4 class="uk-comment-title"><a class="uk-link-reset"
+                                                                        href="#"><span  class = "uk-text-small uk-text-background">Published By:</span> Africa Freedom of
+                                                                        Information Center</a></h4>
+                                                                <ul class="uk-comment-meta uk-subnav uk-subnav-divider">
+                                                                    <li><a href="#"><span class = "uk-text-small uk-text-background">Published on:</span> 31 Oct 2013
+                                                                        </a></li>
+                                                                    <li><a href="#" uk-tooltip="title: Click for more">Report
+                                                                            on Project Monitoring for twelve states</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </header>
+                                                    </article>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id = "cso-pag" class = "uk-margin-small-top">
+                                        <ul class="uk-pagination">
+                                            <li><button class="uk-border-rounded uk-button uk-button-default"><span uk-pagination-previous></span></button></li>
+                                            <li class=""><button class  = "uk-border-rounded uk-button uk-button-default"><span uk-pagination-next></span></button></li>
+                                        </ul>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    VERIFIED! goes here
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="fixed-action-btn uk-visible@m uk-float-right">
+                    <a class="btn-floating btn-large" href="#contact-us" uk-toggle>
+                        <span uk-icon="icon: mail"></span>
+                    </a>
+                </div>
+
+                <div id="contact-us" uk-modal>
+                    <div class="uk-modal-dialog">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header top">
+                            <h2 class="uk-modal-title uk-light">Send Us a Message</h2>
+                        </div>
+                        <div class="uk-modal-body">
+                            <form>
+                                <fieldset class="uk-fieldset">
+
+
+
+                                    <div class="uk-margin">
+                                        <input class="uk-input" type="text" placeholder="Name">
+                                    </div>
+
+                                    <div class="uk-margin">
+                                        <input class="uk-input" type="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="uk-margin">
+                                        <textarea class="uk-textarea" rows="5" placeholder="Type in your message here"></textarea>
+                                    </div>
+                                    <div class="uk-margin">
+                                        <button class="uk-button uk-button-primary uk-modal-close pallette10 uk-width-1-1"
+                                            type="button">Send</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+
+                        </div>
+                        <div class="uk-modal-footer uk-text-right">
+                            <p class="uk-text-meta">Please note that yours concerns raised regarding projects shall be
+                                taken up with the appropriate
+                                governing body. Therefore, we are not resposible for taking action.
+                                <br> Kind Regards, AFIC
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="view-tend-chart" class="uk-modal-container" uk-modal>
+                    <div class="uk-modal-dialog">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header top">
+
+                            <h2 class='uk-text-warning uk-text-center'>Chart Showing top 10 Awardees</h2>
+
+
+                        </div>
+                        <div class="uk-modal-body">
+                            <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--Sumarry Modal View-->
+                <div id="view-summary" class="uk-modal-container" uk-modal>
+                    <div class="uk-modal-dialog">
+                        <input type="hidden" name="click_project_id" id="click_project_id" />
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header top">
+                            <p class='uk-light'>Project summary: </p>
+                            <h5 class='uk-text-warning uk-display-inline' id="summarytitle"></h5>
+                        </div>
+                        <div class='uk-display-block uk-flex uk-flex-center uk-text-center'>
+                            <div class='uk-grid-small uk-child-width-1-1' uk-grid>
+                                <div class='uk-float-left'>
+                                    <a href="" id='give-feedback' class="" uk-icon="icon: comment" title="Click to comment on the project"
+                                        uk-tooltip="pos: bottom" uk-toggle="target: #feedback-form"></a>
+                                </div>
+                            </div>
+                            <div class="uk-modal-body uk-form-horizontal">
+                                <div id="summaryview" class='uk-grid-small uk-child-width-1-2@s' uk-grid>
+
+                                </div>
+                            </div>
+
+                            <div class="uk-modal-footer uk-text-right">
+                                <p class='uk-text-center'>
+                                    <a id="detailLink" href="#">View Project break down for all stages</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Monitored Projects View-->
+                <div id="view-report"  class="" uk-modal>
+                    <div style = "width: 70%" class="uk-modal-dialog uk-margin-auto-vertical">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header top">
+                            <p class='uk-display-inline uk-text-large uk-text-center comforta' id="projectTitle" style="color: #FFFFFF">Project
+                                Report of Contract Monitoring in Tweleve States</p>
+                            <br>
+    
+    
+                        </div>
+                        <div class="uk-modal-body">
+                            <div id="monitor-details" class='uk-grid-small uk-child-width-1-1' uk-grid>
+                                <div>
+                                    <h4 class="uk-heading-line uk-text-left">
+                                        <em title="Comments by procurement monitors who supervised the implementatio of a project"
+                                            uk-tooltip="pos: left">
+                                            <span class='uk-margin-small-right' uk-icon="icon: commenting; ratio: 1"></span>Monitors
+                                            Report</em>
+                                    </h4>
+                                    <div clas='uk-panel uk-panel-scrollable' id="reports">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="uk-heading-line uk-text-left">
+                                        <em title="Pictures taking by the monitorss during thier monitoring exercise"
+                                            uk-tooltip="pos: left">
+                                            <span class='uk-margin-small-right' uk-icon="icon: image; ratio: 1"></span>Images</em>
+                                    </h4>
+                                    <div class="uk-grid-small uk-child-width-1-3@s uk-margin" uk-grid uk-lightbox="animation: scale"
+                                        id="monitorImages">
+    
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="uk-modal-footer uk-text-center">
+                            <div class="uk-grid-small uk-child-width-1-2" uk-grid>
+                                <div>
+                                    <p><em>Project Report by:</em><br /> <span id="cso-name">Africa Freedom of Information
+                                            Centre
+                                            (AFIC)</span></p>
+                                </div>
+                                <div>
+                                    <p><em>Published on:</em><br /><span id="date-published">29th Oct 2028</span>
+                                </div>
+                                </p>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--View Contractor Modal-->
+                <div id="view-org" class="uk-modal-container" uk-modal>
+                    <div class="uk-modal-dialog">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header top">
+
+                            <h2 class='uk-text-warning uk-text-center' uk-tooltip='Name' id='org-name'>Dangote Cement</h2>
+
+                            <div class='uk-flex uk-flex-center uk-text-center'>
+                                <p id='rc-no'>RC Number: 450245-CAC
+                                </p>
+                            </div>
+                        </div>
+                        <div class="uk-modal-body">
+                            <div class=''>
+                                <div class='address uk-margin-small'>
+                                    <div>
+                                        <div class="uk-text-center">
+                                            <!-- Streets icon by Icons8 -->
+                                            <span uk-icon="icon: home"></span>
+                                            <p uk-tooltip='Address' class="uk-display-inline-block" id='address'></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='contact-person uk-margin-small'>
+
+                                    <div class='uk-child-width-1-3@l uk-grid-collapse uk-child-width-1-1@s' uk-grid>
+                                        <div>
+                                            <div class="uk-text-center">
+
+                                                <span uk-icon="icon: user"></span>
+                                                <p class="uk-display-inline-block" uk-tooltip='Contact Person' id='contact-person'>Rotimi
+                                                    Ikechuckwu</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="uk-text-center">
+
+                                                <span uk-icon="icon: mail"></span>
+                                                <p class="uk-display-inline-block" uk-tooltip='Email'><a href="mailto:name@rapidtables.com"
+                                                        class='uk-link-text' id='email-addrs'>joshstones@wef.org</a></p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="uk-text-center">
+
+                                                <span uk-icon="icon: receiver"></span>
+                                                <p class="uk-display-inline-block" uk-tooltip='Phone Number' id='telephone'>234
+                                                    703 924 5256</p>
+                                            </div>
+                                        </div>
+                                        <div Class='uk-width-1-1'>
+                                            <div class="uk-card uk-card-body uk-text-center uk-text-large uk-text-primary">
+
+                                                <p><a href='#!' class='uk-link-text' uk-tooltip='Webite' id='website'>www.dangotecement.com</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-background-contain uk-background-cover" style="background-color: #fffaf2;">
+                <div class='uk-container'>
+                    <div class='uk-padding uk-margin-large-top uk-text-medium uk-text-center uk-flex uk-flex-center comforta'
+                        id="who">
+                        <p>
+                            Budeshi Uganda is an initiative of the
+                            <a href="https://africafoicentre.org">Africa Freedom of Information Centre</a> in
+                            partnership with the
+                            <a href="http://procurementmonitor.org/ppdc/">
+                                Public and Private Develoment Centre.</a>
+                        </p>
+                    </div>
+                    <div class='uk-text-center uk-flex uk-flex-center comforta' id="who">
+                        <p>Implementation support is provided by
+                            <a href="http://www.pau.edu.ng"> Pan-Atlantic University</a> and
+                            <a href='http://ptcij.org/'>Premium Times Centre for Investigative Journalism
+                            </a>
+                        </p>
+                    </div>
+                    <div class='uk-container'>
+                        <div class='uk-grid-small uk-child-width-1-4 uk-margin' uk-grid>
+                            <div>
+                                <div class='uk-margin'>
+                                    <a href='https://africafoicentre.org'>
+                                        <img src='<?php echo ABS_PATH;?>images/logo.png' />
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class='uk-margin'>
+                                    <a href='http://procurementmonitor.org/ppdc/'>
+                                        <img src='<?php echo ABS_PATH;?>images/ppdc-logo2.png' width="35%" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class='uk-margin'>
+                                    <a href='http://smc.edu.ng/'>
+                                        <img src='<?php echo ABS_PATH;?>images/smc.png' width="35%" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class='uk-margin'>
+                                    <a href='http://ptcij.org/'>
+                                        <img src='<?php echo ABS_PATH;?>images/ptcij.png' width="35%" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class='uk-container'>
+                    <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                        <div>
+                            <div class='uk-text-medium uk-text-center uk-flex uk-flex-center comforta uk-float-right'>
+                                <p>
+                                    Proudly Supported by
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class='uk-grid-collapse uk-child-width-1-2' uk-grid>
+                                <div class="uk-padding-remove">
+                                    <div class='uk-margin uk-flex uk-flex-center uk-float-right'>
+                                        <a href='https://www.omidyar.com/' class="uk-padding-remove uk-float-right'">
+                                            <img src='<?php echo ABS_PATH;?>images/omd.png' width="40%" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="uk-padding-remove">
+                                    <div class='uk-flex uk-flex-center'>
+                                        <a href='https://www.macfound.org/' class="uk-padding-remove">
+                                            <img src='<?php echo ABS_PATH;?>images/macarthur-logo.png' width="80%" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='uk-text-small uk-text-center uk-flex uk-flex-center comforta uk-float-right uk-width-1-1'>
+                    <p>
+                        © 2018, PPDC.
+                        <a class="uk-link-muted" href="#terms" uk-toggle>Terms</a>
+                    </p>
+                    <!-- This is the modal -->
+                    <div id="terms" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h4 class="uk-modal-title comforta">CREATIVE COMMON ATTRIBUTION SHARE -ALIKE LICENSE</h4>
+                            <p>Budeshi.ng and all logos, products, services or other content on www.budeshi.ng or other
+                                mobile
+                                download platforms are the intellectual property of the Public and Private Development
+                                Centre
+                                (PPDC). This work can be re-used and re-distributed, in whole or in part, for a profit
+                                or
+                                nonprofit purposes as long as the creator is appropriately credited, and any derivative
+                                shall
+                                be made available under the same, similar or a compatible license.
+                            </p>
+                            <p class="uk-text-warning uk-text-large">
+                                DISCLAIMER
+                            </p>
+                            <p>PPDC will not be responsible for any misrepresentation upon reproduction of data
+                                available on
+                                Budeshi except such reproduction has been, prior to publication, reviewed and certified
+                                by
+                                PPDC.
+                            </p>
+                            <p class="uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close pallette10" type="button">Ok,
+                                    got it!</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="<?php echo ABS_PATH;?>js/index.js"></script>
+    <script src="<?php echo ABS_PATH?>js/budeshi.js"></script>
+    <script src="<?php echo ABS_PATH?>js/form2js.js"></script>
+</body>
+
+</html>

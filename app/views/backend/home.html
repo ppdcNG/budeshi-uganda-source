@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/uikit.min.css" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH;?>css/styles.css" />
+    <script src="<?php echo ABS_PATH;?>js/jquery.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/uikit-icons.min.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/index.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+            <img src='<?php echo ABS_PATH;?>images/budeshi.png'/ width='50'>
+          </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">Ministiries, Agencies, Departments</div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#add-institution" title="Add New MDA" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: plus"></span></a>
+                    <!-- Add Intitution Modal -->
+                    <div id="add-institution" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Add New MDA </h2>
+                            </div>
+                            <div class="uk-modal-body">
+                                <form id = "mda-details">
+                                    <fieldset class="uk-fieldset">
+                                        <legend class="uk-legend">Name</legend>
+                                        <div class="uk-margin">
+                                            <input class="uk-input" id = "commonName" type="text" placeholder="Common Name" name='commonName' title="A common name for this organization or other participant in the contracting process. " uk-tooltip="pos: bottom" required>
+                                        </div>
+                                    </fieldset>
+                                                <div class='uk-grid-small' uk-grid>
+                                                  <fieldset>
+                                                    <div class="uk-width-1-1 uk-margin">
+                                                        <label class="uk-form-label" for="streetName">Address</label>
+                                                        <input class="uk-input" type="text" value="" id='address' name='address' title="The street address. For example, 1600 Amphitheatre Pkwy.
+" uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="locality">Phone</label>
+                                                        <input class="uk-input" type="text" value=""  id='phone' name='phone' title="contact person phone" uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="countryName">Sector</label>
+                                                        <input class="uk-input" type="text" value="" id='sector' name='sector' title="Sector of the MDA." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="postalCode"><Acronym>Acronym</Acronym></label>
+                                                        <input class="uk-input" type="text" value="" id='shortname' name='shortname' title="short name for this MDA e.g UBEC" uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="countryName">Identification Scheme</label>
+                                                        <input class="uk-input" type="text" value="" id='sector' name='scheme' title="Sector of the MDA." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="countryName">Identificaiton number</label>
+                                                        <input class="uk-input" type="text" value="" id='sector' name='ug_id' title="Sector of the MDA." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="countryName">Sector</label>
+                                                        <input class="uk-input" type="text" value="" id='sector' name='sector' title="Sector of the MDA." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="postalCode">Website</label>
+                                                        <input class="uk-input" type="text" value="" id='website' name='website' title="The postal code. For example, 94043." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                  </fieldset>
+                                                </div>
+                                </form>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" type="button" id='add-mda' data-status="success">Save</button>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Edit Intitution Modal -->
+                    <div id="edit-institution" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Edit MDA </h2>
+                            </div>
+                            <input type = "hidden" id = "e_project_id"/>
+                            <div class="uk-modal-body">
+                                <form id = "mda-edit">
+                                    <fieldset class="uk-fieldset">
+                                        <legend class="uk-legend">Name</legend>
+                                        <div class="uk-margin">
+                                            <input class="uk-input" id = "e_commonName" type="text" placeholder="Common Name" name='commonName' title="A common name for this organization or other participant in the contracting process. " uk-tooltip="pos: bottom" required>
+                                        </div>
+                                    </fieldset>
+                                                <div class='uk-grid-small' uk-grid>
+                                                  <fieldset>
+                                                    <div class="uk-width-1-1 uk-margin">
+                                                        <label class="uk-form-label" for="streetName">Address</label>
+                                                        <input class="uk-input" type="text" value="" id='e_address' name='address' title="The street address. For example, 1600 Amphitheatre Pkwy.
+" uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="locality">Phone</label>
+                                                        <input class="uk-input" type="text" value=""  id='e_phone' name='phone' title="contact person phone" uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="countryName">Sector</label>
+                                                        <input class="uk-input" type="text" value="" id='e_sector' name='sector' title="Sector of the MDA." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="postalCode">Acronym</label>
+                                                        <input class="uk-input" type="text" value="" id='e_shortname' name='shortname' title="short name for this MDA e.g UBEC" uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="countryName">Identificaiton Scheme</label>
+                                                        <input class="uk-input" type="text" value="" id='e_scheme' name='scheme' title="Sector of the MDA." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="countryName">Identificaiton Number</label>
+                                                        <input class="uk-input" type="text" value="" id='e_ug_id' name='ug_id' title="Sector of the MDA." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="postalCode">Website</label>
+                                                        <input class="uk-input" type="text" value="" id='e_website' name='website' title="The postal code. For example, 94043." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                    <div class="uk-width-1-2@s uk-margin">
+                                                        <label class="uk-form-label" for="postalCode">email</label>
+                                                        <input class="uk-input" type="text" value="" id='e_email' name='email' title="The postal code. For example, 94043." uk-tooltip="pos: bottom" reqiured>
+                                                    </div>
+                                                  </fieldset>
+                                                </div>
+                                </form>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" type="button" id='edit-mda' data-status="success">Save</button>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- xxx -->
+                </li>
+                <li>
+                    <a href="<?php echo ABS_PATH;?>/Feedback/1" title="Feedback page" uk-tooltip="pos: bottom">
+                        <span class="uk-margin-small-right" uk-icon="icon: comment"></span>
+                    </a>
+                </li>
+                <li>
+                  <a href="<?php echo ABS_PATH?>/Organisation/" title="Go to Organizations DB" uk-tooltip="pos: bottom"><span class="uk-margin-small-right" uk-icon="icon: database"></span></a>
+                </li>
+            </ul>
+            <div>
+                <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <form class="uk-search uk-search-navbar uk-width-1-1">
+                                <input class="uk-search-input" id = "search" type="search" placeholder="Search..." autofocus>
+                            </form>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="<?php echo ABS_PATH?>/Monitor/transact/logout"><span class="uk-margin-small-right" uk-icon="icon: user"></span></a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active"><a href="<?php echo ABS_PATH?>/Monitor/transact/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- List of Institutions table -->
+    <div class='uk-padding-large'>
+        <table id = "institutions" class="uk-table uk-table-hover uk-table-divider">
+            <tbody>
+                <?php echo $mdas ?>
+                
+            </tbody>
+        </table>
+        <!--- Delete MDA Modal -->
+        <div id="delete-institution" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                <input type = "hidden" id = "delete-id">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <p>Are you sure you want to delete??</p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-institution-not' onclick = "deleteM()" data-status="success">Yes</button>
+                    <!-- Notification for deleting Institution -->
+                </div>
+            </div>
+        </div>
+        <!-- xxx -->
+    </div>
+    <script src="<?php echo ABS_PATH;?>js/form2js.js"></script>
+    <script src="<?php echo ABS_PATH;?>js/monitor.js"></script>
+</body>
+
+</html>

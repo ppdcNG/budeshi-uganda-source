@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="<?php echo ABS_PATH?>css/uikit.min.css" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH?>css/styles.css" />
+    <script src="<?php echo ABS_PATH?>js/jquery.js"></script>
+    <script src="<?php echo ABS_PATH?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH?>js/uikit-icons.min.js"></script>
+    <script src="<?php echo ABS_PATH?>js/index.js"></script>
+</head>
+
+<body class='login-page'>
+    <div class='uk-position-center uk-padding' uk-grid>
+        <div>
+          <div class=''>
+            <img class='' src='<?php echo ABS_PATH?>images/budeshi.png'/>
+          </div>
+        </div>
+        <hr>
+        <div>
+            <form action = "<?php echo ABS_PATH?>Monitor/transact/login" method = "post">
+              <div  class="uk-child-width-1-1">
+                <div>
+                    <div class="uk-inline uk-margin uk-width-1-1">
+                        <a class="uk-form-icon" href="#" uk-icon="icon: user"></a>
+                        <input class="uk-input uk-width-1-1" type="text" name = "username">
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-inline uk-margin uk-width-1-1">
+                        <a class="uk-form-icon" href="#" uk-icon="icon: link"></a>
+                        <input class="uk-input uk-width-1-1" type="password" name = "password">
+                    </div>
+                </div> 
+                <div class='uk-margin'>
+                  <button type = "submit" class="uk-button uk-button-default uk-width-1-1">Log in</button>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

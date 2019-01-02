@@ -1,0 +1,62 @@
+{
+    "ocid": "",
+    "date": "",
+    "id": "",
+    "tag": [
+        "tender"
+    ],
+    "initiationType": "tender",
+    "tender": {
+        "id": "",
+        "title": "",
+        "description": "",
+        "status": "",
+        "value": {
+            "amount": "",
+            "currency": "NGN"
+        },
+        "minValue": {
+            "amount": "",
+            "currency": "NGN"
+        },
+        "procurementMethod": "",
+        "procurementMethodDetails": "",
+        "procurementDetailsRationale": "",
+        "mainProcurementCategory": "",
+        "addtionalProcurementCategories": [
+            []
+        ],
+        "awardCriteria": "",
+        "awardCriteriaDetails": "",
+        "submissionMethod": [
+            ""
+        ],
+        "submissionMethodDetails": "",
+        "tenderPeriod": {
+            "startDate": "",
+            "endDate": "",
+            "maximumExtent": "",
+            "durationInDays": ""
+        },
+        "enquiryPeriod": {
+            "startDate": "",
+            "endDate": "",
+            "maximumExtent": "",
+            "durationInDays": ""
+        },
+        "hasEnquiries": false,
+        "eligibilityCriteria": "",
+        "awardPeriod": {
+            "startDate": "",
+            "endDate": "",
+            "maximumExtent": "",
+            "durationInDays": ""
+        },
+        "numberOfTenderers": "",
+        "tenderers": [],
+        "milestones": [],
+        "items": [],
+        "documents": []
+    },
+    "parties": []
+}

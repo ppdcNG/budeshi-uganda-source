@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	<title>Project Title</title>
+	<link rel="stylesheet" href="../css/uikit.min.css" />
+	<link rel="stylesheet" href="../css/styles.css" />
+	<script src="../js/jquery.js"></script>
+	<script src="../js/uikit.min.js"></script>
+	<script src="../js/uikit-icons.min.js"></script>
+	<script src="../js/index.js"></script>
+</head>
+
+<body>
+	<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+		<div class="uk-navbar-left uk-padding-small">
+			<a href="#" class="uk-link-reset">
+				<img src='../images/budeshi.png' width="15%"> Budeshi 2.0
+			</a>
+		</div>
+		<div class='uk-navbar-right'>
+			<!-- This is a button toggling the modal -->
+			<button class="uk-button uk-button-default uk-margin-small-right" type="button" style='margin: 0 auto' uk-toggle="target: #modal-example">Find Projects <span uk-search-icon><span> </button>
+
+			<!-- This is the modal -->
+			<div id="modal-example" uk-modal>
+				<div class="uk-modal-dialog uk-modal-body">
+					<h2 class="uk-modal-title">Headline</h2>
+					<div class="filter-param uk-panel uk-placeholder">
+						<div class='mda uk-margin'>
+							<button class="uk-button uk-button-default uk-width-1-1" type="button">Ministries, Departments, Agencies</button>
+							<div uk-dropdown="pos: bottom-justify; boundary: .filter-param; boundary-align: true; mode: click">
+								<ul class="uk-nav uk-dropdown-nav">
+									<li class="uk-active"><a href="#">Choose MDA</a></li>
+									<li class="uk-nav-header"><label><input class="uk-checkbox" type="checkbox"> Select All</label></li>
+									<li class="uk-nav-divider"></li>
+									<li class="uk-active"><a href="#" disabled>Choose MDA</a></li>
+
+									<li><label><input class="uk-checkbox" type="checkbox"> Universal Basic Education Commission (UBEC)</label></li>
+									<li><label><input class="uk-checkbox" type="checkbox"> National Primary Healthcare Development Centre (NHDC)</label></li>
+									<li><label><input class="uk-checkbox" type="checkbox"> Bureau of Public Procurement (BPP)</label></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class='uk-child-width-1-2' uk-grid>
+							<div class='states'>
+								<button class="uk-button uk-button-default uk-float-left" type="button">State</button>
+								<div uk-dropdown="pos: bottom-justify; boundary: .filter-param; boundary-align: true; mode: click">
+									<ul class="uk-nav uk-dropdown-nav">
+										<li class="uk-active"><a href="#">Choose States</a></li>
+										<li class="uk-nav-header"><label><input class="uk-checkbox" type="checkbox"> Select All</label></li>
+										<li class="uk-nav-divider"></li>
+									</ul>
+									<div class="uk-column-1-2">
+										<ul class="uk-nav uk-dropdown-nav">
+											<li><label><input class="uk-checkbox" type="checkbox"> Abia</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Adamawa</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Akwa Ibom</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Bauchi</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Bayelsa</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Benue</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Borno</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Cross River</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Delta</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Ebonyi</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Edo</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Ekiti</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Federal Capital Territory (FCT)</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Gombe</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Imo</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Jigawa</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Kaduna</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Kano</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Katsina</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Kebbi</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Kogi</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Kwara</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Lagos</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Nasarawa</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Niger</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Ogun</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Ondo</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Osun</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Oyo</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Plateau</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Rivers</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Sokoto</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Taraba</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Yobe</label></li>
+											<li><label><input class="uk-checkbox" type="checkbox"> Zamfara</label></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class='years'>
+								<button class="uk-button uk-button-default uk-float-right" type="button">Year</button>
+								<div uk-dropdown="pos: bottom-justify; boundary: .filter-param; boundary-align: true; mode: click">
+									<ul class="uk-nav uk-dropdown-nav">
+										<li class="uk-active"><a href="#">Choose Year</a></li>
+										<li class="uk-nav-header"><label><input class="uk-checkbox" type="checkbox"> Select All</label></li>
+										<li class="uk-nav-divider"></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> 2014</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> 2015</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> 2016</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> 2017</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> 2018</label></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class='procurement-stage uk-margin-top'>
+								<button class="uk-button uk-button-default uk-float-left" type="button">Procurement Stage</button>
+								<div uk-dropdown="pos: bottom-justify; boundary: .filter-param; boundary-align: true; mode: click">
+									<ul class="uk-nav uk-dropdown-nav">
+										<li class="uk-active"><a href="#">Choose Stage</a></li>
+										<li class="uk-nav-header"><label><input class="uk-checkbox" type="checkbox"> Select All</label></li>
+										<li class="uk-nav-divider"></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Planning</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Initiation (Tender)</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Award</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Contract</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Implementation</label></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class='contractors uk-margin-top'>
+								<button class="uk-button uk-button-default uk-float-right" type="button">Contractor</button>
+								<div uk-dropdown="pos: bottom-justify; boundary: .filter-param; boundary-align: true; mode: click">
+									<ul class="uk-nav uk-dropdown-nav">
+										<li class="uk-active"><a href="#">Choose Contractor</a></li>
+										<li class="uk-nav-header"><label><input class="uk-checkbox" type="checkbox"> Select All</label></li>
+										<li class="uk-nav-divider"></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Dangote Cement</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Obioma Clothings</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Tolani Amala</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Musa Security</label></li>
+										<li><label><input class="uk-checkbox" type="checkbox"> Terna Foods ltd</label></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="uk-margin uk-child-width-1-1">
+							<form class="uk-search uk-search-default">
+								<a href="" class="uk-search-icon-flip" uk-search-icon></a>
+								<input class="uk-search-input" type="search" placeholder="Search...">
+							</form>
+						</div>
+					</div>
+					<p class="uk-text-right">
+						<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+						<button class="uk-button uk-button-primary" type="button">Save</button>
+					</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+
+	<hr>
+	<div class='uk-container'>
+
+		<div class='project-overview' id='project-overview'>
+			<div>
+				<h3>Construction of 2 classroom blocks in Umunna Bende LGA, Abia State</h3>
+			</div>
+			<hr>
+			<div id='ubecproject'>
+				<ul class="uk-subnav uk-subnav-pill" uk-switcher>
+					<li><a href="#">Planning</a></li>
+					<li><a href="#">Initiation (Tender)</a></li>
+					<li><a href="#">Award</a></li>
+					<li><a href="#">Contract</a></li>
+					<li><a href="#">Implementation</a></li>
+				</ul>
+
+				<ul class="uk-switcher uk-margin">
+					<li>Planing!</li>
+					<li>Tender</li>
+					<li>Award!</li>
+					<li>Contract!</li>
+					<li>
+						<div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-grid-match" uk-grid>
+							<div>
+								<div class="uk-card uk-card-default uk-card-body">
+									<img src="../images/slide1.jpg">
+								</div>
+							</div>
+							<div>
+								<div class="uk-card uk-card-default uk-card-body"><img src="../images/slide2.jpg"></div>
+							</div>
+							<div>
+								<div class="uk-card uk-card-default uk-card-body"><img src="../images/slide3.jpg"></div>
+							</div>
+						</div>
+						<br>
+
+						<div>
+							<div class="uk-grid-divider uk-child-width-1-2" uk-grid>
+								<div>Budgeted Amount</div>
+								<div>&#8358;4,500,000</div>
+								<div>Contracted Amount</div>
+								<div>&#8358;6,500,000</div>
+								<div>Monitors Report</div>
+								<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+									aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+									magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+									et dolore magna aliqua.</div>
+							</div>
+						</div>!</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	</div> <script src='../js/map.js'>
+    </script>
+	<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script> <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhIkwKhcGrtLh3Ld2MC7PZmNwIma3R5pE&callback=initMap">
+    </script>
+
+</body>
+
+</html>

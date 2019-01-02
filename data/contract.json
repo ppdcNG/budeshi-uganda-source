@@ -1,0 +1,35 @@
+{
+    "ocid": "",
+    "id": "",
+    "tag": [
+        "tender"
+    ],
+    "initiationType": "",
+    "contract": {
+        "id": "",
+        "awardID": "",
+        "status": "",
+        "title": "",
+        "description": "",
+        "period": {
+            "startDate": "",
+            "endDate": "",
+            "maximumExtent": "",
+            "durationInDays": ""
+        },
+        "value": {
+            "amount": "",
+            "currency": "NGN"
+        },
+        "dateSigned": "",
+        "milestones": [],
+        "items": [],
+        "documents": [],
+        "amendments": []
+    },
+    "milesone": {
+        "dateModified": ""
+    },
+    "date": "",
+    "parties": []
+}

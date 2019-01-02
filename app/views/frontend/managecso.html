@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Manage CSO</title>
+    <link rel="stylesheet" href="../css/uikit.min.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/jquery.js"></script>
+    <script src="../js/uikit.min.js"></script>
+    <script src="../js/uikit-icons.min.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src='../images/budeshi.png' / width='50'>
+            </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">CSO entering Data on BUdeshi UG</div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+
+                <li>
+                    <a href="#" title="Home" uk-tooltip="pos: bottom">
+                        <span class="uk-margin-small-right" uk-icon="icon: home"></span>
+                    </a>
+                </li>
+            </ul>
+            <div>
+                <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <form class="uk-search uk-search-navbar uk-width-1-1">
+                                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                            </form>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active">
+                                <a href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- List of Institutions table -->
+    <div class='uk-padding-large'>
+        <table class="uk-table uk-table-hover uk-table-divider">
+            <thead>
+                    <tr>
+                            <th>Action</th>
+                            <th>CSO Name</th>
+                            <th>Registration</th>
+                            <th>No of Entries</th>
+                            <th>Action</th>
+                            
+                        </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="#add-institution" title="Edit Organization" uk-tooltip="pos: bottom" uk-toggle>
+                            <span class="uk-margin-small-right" uk-icon="icon: file-edit"></span>
+                        </a>
+                    </td>
+                    <td uk-toggle="target: #view-institution">Barking Consulting</td>
+                    <td>CAC-BK-404</td>
+                    <td>3 <a href="#" title="Veiw Entries" uk-tooltip="pos: bottom" uk-toggle>
+                            View Entries
+                        </a></td>
+                    <td>
+                        <a href="#delete-institution" title="Delete Organization" uk-tooltip="pos: bottom" uk-toggle>
+                            <span class="uk-margin-small-right" uk-icon="icon: trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- View Intitution Modal -->
+        <div id="view-institution" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">Barking Consulting</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <form class="uk-form-stacked">
+                        <fieldset class="uk-fieldset">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="view-legalName">Legal Name</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="view-legalName" type="text" value="Dangote Cement" name='' disabled>
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="view-id">Entity ID</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="view-id" type="text" value="Bud-2017" name='id' disabled>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <ul uk-accordion="multiple: true">
+                            <li>
+                                <h3 class="uk-accordion-title">Primary Identifier</h3>
+                                <div class="uk-accordion-content">
+                                    <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                        <div>
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="scheme">Scheme</label>
+                                                <div class="uk-form-controls">
+                                                    <input class="uk-input" id="view-scheme" type="text" value="NG-CAC" name='scheme' disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label" for="id">RC Number</label>
+                                                <div class="uk-form-controls">
+                                                    <input class="uk-input" id="view-id" type="text" value="CAC-123" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label" for="view-uri">URI</label>
+                                            <div class="uk-form-controls">
+                                                <input class="uk-input" id="view-uri" type="text" value="https://opencorporates.com/companies/in/U26943TG2012FTC081382" name='uri'
+                                                    disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h3 class="uk-accordion-title">Address</h3>
+                                <div class="uk-accordion-content">
+                                    <div class='uk-grid-small' uk-grid>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="view-streetName">Street</label>
+                                            <input class="uk-input" type="text" value="4, North London Business Park, Oakleigh Rd S" id='view-streetName' name='streeName'
+                                                disabled>
+                                        </div>
+                                        <div class="uk-width-1-2@s uk-margin">
+                                            <label class="uk-form-label" for="view-locality">Town</label>
+                                            <input class="uk-input" type="text" value="Abuja" name='' id='view-locality' name='locality' disabled>
+                                        </div>
+                                        <div class="uk-width-1-2@s uk-margin">
+                                            <label class="uk-form-label" for="view-region">State</label>
+                                            <input class="uk-input" type="text" value="E.g FCT" id='view-region' name='region' disabled>
+                                        </div>
+                                        <div class="uk-width-1-2@s uk-margin">
+                                            <label class="uk-form-label" for="view-countryName">Country</label>
+                                            <input class="uk-input" type="text" value="Nigeria" id='view-countryName' name='countryName' disabled>
+                                        </div>
+                                        <div class="uk-width-1-2@s uk-margin">
+                                            <label class="uk-form-label" for="view-postalCode">Postal Code</label>
+                                            <input class="uk-input" type="number" value="100" id='view-postalCode' name='postalCode' disabled>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h3 class="uk-accordion-title">Contact Point</h3>
+                                <div class="uk-accordion-content">
+                                    <div class="uk-accordion-content">
+                                        <div class='uk-grid-small' uk-grid>
+
+                                            <div class="uk-width-1-1 uk-margin">
+                                                <label class="uk-form-label" for="view-url">url</label>
+                                                <input class="uk-input" type="url" value="www.mda.ng.gov" id='view-url' name='name' disabled>
+                                            </div>
+                                            <div class="uk-width-1-2@s uk-margin">
+                                                <label class="uk-form-label" for="view-name">Name</label>
+                                                <input class="uk-input" type="text" value="Emeka Haruna" id='view-name' name='name' disabled>
+                                            </div>
+                                            <div class="uk-width-1-2@s uk-margin">
+                                                <label class="uk-form-label" for="view-email">Email</label>
+                                                <input class="uk-input" type="email" value="e.haruna@mda.ng.gov" id='view-email' name='email' disabled>
+                                            </div>
+                                            <div class="uk-width-1-2@s uk-margin">
+                                                <label class="uk-form-label" for="view-phone">Phone</label>
+                                                <input class="uk-input" type="tel" value="08033344455" id='view-phone' name='phone' disabled>
+                                            </div>
+                                            <div class="uk-width-1-2@s uk-margin">
+                                                <label class="uk-form-label" for="view-faxNumber">Fax Number</label>
+                                                <input class="uk-input" type="number" value="100" id='view-faxNumber' name='faxNumber' disabled>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Close</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" type="button" id='add-org-not' uk-toggle="target: #add-institution">
+                        <span class="uk-margin-small-right" uk-icon="icon: file-edit"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- xxx -->
+        <!--- Delete MDA Modal -->
+        <div id="delete-institution" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <p>Are you sure you want to delete??</p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-institution-not' data-message="<span uk-icon='icon: check'></span> MDA Successfully Deleted"
+                        data-status="success">Yes</button>
+                    <!-- Notification for deleting Institution -->
+                    <script>
+                        jQuery('#delete-institution-not').on('click', function () {
+                            UIkit.notification($(this).data());
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- xxx -->
+    </div>
+    <!-- Pagination -->
+    <ul class="uk-pagination">
+        <li>
+            <a href="">
+                <span uk-pagination-previous></span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span uk-pagination-next></span>
+            </a>
+        </li>
+    </ul>
+</body>
+
+</html>

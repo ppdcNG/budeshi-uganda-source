@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Feedback Management</title>
+    <link rel="stylesheet" href="<?php echo ABS_PATH; ?>css/uikit.min.css" />
+    <link rel="stylesheet" href="<?php echo ABS_PATH; ?>css/styles.css" />
+    <script src="<?php echo ABS_PATH; ?>js/jquery.js"></script>
+    <script src="<?php echo ABS_PATH; ?>js/uikit.min.js"></script>
+    <script src="<?php echo ABS_PATH; ?>js/uikit-icons.min.js"></script>
+    <script src="<?php echo ABS_PATH; ?>js/index.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-navbar-transparent back-top" uk-sticky uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src='<?php echo ABS_PATH; ?>images/budeshi.png' / width='50'>
+            </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item">Manage Feedback</div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+                    <li>
+                            <a href="<?php echo ABS_PATH;?>/Monitor" title="Go to MDA List" uk-tooltip="pos: bottom">
+                                <span class="uk-margin-small-right" uk-icon="icon: home"></span>
+                            </a>
+                        </li>
+                
+                <li>
+                    <a href="<?php echo ABS_PATH;?>/Organisation" title="Go to Organizations DB" uk-tooltip="pos: bottom">
+                        <span class="uk-margin-small-right" uk-icon="icon: database"></span>
+                    </a>
+                </li>
+            </ul>
+            <div>
+                <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <form class="uk-search uk-search-navbar uk-width-1-1">
+                                <input class="uk-search-input" id = 'search' type="search" placeholder="Search..." autofocus>
+                            </form>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active">
+                                <a href="#">User Details</a>
+                            </li>
+                            <li class="uk-active">
+                                <a href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class='navigation uk-padding'>
+        <ul class="uk-breadcrumb">
+            <li>
+                <a href="<?php echo ABS_PATH?>Monitor">List of MDAs</a>
+            </li>
+            <li class="uk-disabled uk-active">
+                <a href="#">
+                    Feedbacks
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- List of Comments -->
+    <div class='uk-container uk-padding'>
+        <ul class="uk-comment-list  uk-list-divider">
+            <?php echo $feedback; ?>
+        </ul>
+
+        <div id="publish-feed" uk-modal>
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <div class='uk-modal-body'>
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                    <p class='uk-text-large'>Are you sure you want to
+                        <b>publish</b>/ <b>Un-Publish</b> this feedback??</p>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" type="button" onclick="pub_call()">Yes</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="delete-feed" uk-modal>
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <div class='uk-modal-body'>
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                    <p class='uk-text-large'>Are you sure you want to
+                        <b>Delete</b> this feedback??</p>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary uk-modal-close" type="button" onclick="del_call()">Yes</button>
+                </div>
+            </div>
+        </div>
+        <div class = 'uk-container uk-container-small' style = 'color:white; font-size:22px'>
+            <ul class="uk-pagination uk-flex-center" uk-margin>
+                <?php echo $pagination;?>
+            </ul>
+        </div>
+
+        <div id="contact-feed" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title">Terlumun Azenda</h2>
+                </div>
+                <div class="uk-modal-body">
+                    <div class='uk-grid-small uk-child-width-1-1' uk-grid>
+                        <div>
+                            <div class="uk-margin">
+                                <a href="mailto:terlumun.azenda@google.com" id = 'contact-mail' class="uk-button uk-button-default uk-margin"
+                                    target="_blank" style="width: 100%" disabled>terlumun.azenda@google.com</a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-margin">
+                                <a class="uk-button uk-button-default uk-margin"  id = 'contact-phone' disabled style="width: 100%">+2348023456789</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src = '<?php echo ABS_PATH ?>js/feedback.js'></script>
+</body>
+
+</html>
